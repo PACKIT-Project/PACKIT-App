@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:packit/app/config/app_binding.dart';
 import 'package:packit/app/config/app_route.dart';
@@ -12,14 +13,26 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      theme: ThemeData(
-        fontFamily: 'Pretendard',
-        useMaterial3: true,
-      ),
-      initialBinding: AppBinding(),
-      initialRoute: AppRoute.login,
-      getPages: AppRoute.routes,
+    return ScreenUtilInit(
+      designSize: const Size(390, 844),
+      minTextAdapt: true,
+      builder: (_, child) {
+        return GetMaterialApp(
+          theme: ThemeData(
+            fontFamily: 'Pretendard',
+            useMaterial3: true,
+          ),
+          builder: (context, child) {
+            return MediaQuery(
+              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+              child: child!,
+            );
+          },
+          initialBinding: AppBinding(),
+          initialRoute: AppRoute.login,
+          getPages: AppRoute.routes,
+        );
+      },
     );
   }
 }
