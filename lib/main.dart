@@ -17,6 +17,7 @@ class MainApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(390, 844),
       minTextAdapt: true,
+      useInheritedMediaQuery: true,
       builder: (_, child) {
         return GetMaterialApp(
           theme: ThemeData(
