@@ -22,6 +22,7 @@ class MainApp extends StatelessWidget {
           theme: ThemeData(
             fontFamily: 'Pretendard',
             useMaterial3: true,
+            scaffoldBackgroundColor: Colors.white,
           ),
           builder: (context, child) {
             return MediaQuery(
