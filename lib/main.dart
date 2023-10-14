@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:packit/app/config/app_binding.dart';
-import 'package:packit/app/config/app_route.dart';
+import 'package:packit/app/config/routes/route_path.dart';
+import 'package:packit/app/config/routes/routes.dart';
 
 void main() {
   runApp(const MainApp());
@@ -29,8 +30,8 @@ class MainApp extends StatelessWidget {
             );
           },
           initialBinding: AppBinding(),
-          initialRoute: AppRoute.login,
-          getPages: AppRoute.routes,
+          initialRoute: RoutePath.login,
+          getPages: Routes.routes,
         );
       },
     );
