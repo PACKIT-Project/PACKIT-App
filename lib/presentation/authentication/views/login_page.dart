@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:packit/app/config/routes/route_path.dart';
 
 import '../widget/sso_login_button.dart';
 
@@ -14,20 +15,22 @@ class LoginPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset("assets/images/packit.svg", width: 169.98.w, height: 50.52.h),
-            SizedBox(height: 5.71.h),
+            SvgPicture.asset("assets/images/packit.svg", width: 169.98.w, height: 50.52.w),
+            SizedBox(height: 5.71.w),
             Text(
               "빈틈없는 여행 준비, 패킷",
               style: TextStyle(fontSize: 18.53.sp, fontWeight: FontWeight.w600),
             ),
-            SizedBox(height: 115.51.h),
+            SizedBox(height: 115.51.w),
             SSOLoginButton(
               "카카오로 로그인",
               iconName: "kakao",
               color: const Color(0xFFFEE500),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, RoutePath.onboarding);
+              },
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 10.w),
             SSOLoginButton(
               "다른 방법으로 시작하기",
               border: Border.all(color: const Color(0xFF6C747C), width: 0.8.w),
@@ -54,7 +57,7 @@ class LoginPage extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizedBox(height: 23.55.h),
+                SizedBox(height: 23.55.w),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -67,7 +70,7 @@ class LoginPage extends StatelessWidget {
                     SizedBox(width: 25.13.w),
                   ],
                 ),
-                SizedBox(height: 21.45.h),
+                SizedBox(height: 21.45.w),
                 SSOLoginButton(
                   "네이버로 시작하기",
                   iconName: "naver",
@@ -75,7 +78,7 @@ class LoginPage extends StatelessWidget {
                   textColor: Colors.white,
                   onPressed: () {},
                 ),
-                SizedBox(height: 10.h),
+                SizedBox(height: 10.w),
                 SSOLoginButton(
                   "Apple로 시작하기",
                   iconName: "apple",
@@ -83,7 +86,7 @@ class LoginPage extends StatelessWidget {
                   textColor: Colors.white,
                   onPressed: () {},
                 ),
-                SizedBox(height: 56.h),
+                SizedBox(height: 56.w),
               ],
             ),
           );
