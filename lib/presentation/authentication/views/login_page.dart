@@ -45,51 +45,70 @@ class LoginPage extends StatelessWidget {
 
   Future<dynamic> showAnotherLoginMethodModal(BuildContext context) {
     return showModalBottomSheet(
-        context: context,
-        backgroundColor: Colors.white,
-        barrierColor: Colors.black.withOpacity(0.4),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(16)),
-        ),
-        builder: (context) {
-          return SizedBox(
-            width: double.maxFinite,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(height: 23.55.w),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+      context: context,
+      backgroundColor: Colors.transparent,
+      barrierColor: Colors.black.withOpacity(0.4),
+      elevation: 0,
+      builder: (context) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 40.w,
+              height: 6.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(37),
+                color: Colors.white.withOpacity(0.39),
+              ),
+            ),
+            SizedBox(height: 9.w),
+            Container(
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(16), topRight: Radius.circular(16)),
+                color: Colors.white,
+              ),
+              child: SizedBox(
+                width: double.maxFinite,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text("다른 방법으로 로그인", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w700)),
-                    SizedBox(width: 71.37.w),
-                    GestureDetector(
-                      onTap: () => Navigator.pop(context),
-                      child: Icon(Icons.close, size: 24.w),
+                    SizedBox(height: 23.55.w),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text("다른 방법으로 로그인", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w700)),
+                        SizedBox(width: 71.37.w),
+                        GestureDetector(
+                          onTap: () => Navigator.pop(context),
+                          child: Icon(Icons.close, size: 24.w),
+                        ),
+                        SizedBox(width: 25.13.w),
+                      ],
                     ),
-                    SizedBox(width: 25.13.w),
+                    SizedBox(height: 21.45.w),
+                    SSOLoginButton(
+                      "네이버로 시작하기",
+                      iconName: "naver",
+                      color: const Color(0xFF03C75A),
+                      textColor: Colors.white,
+                      onPressed: () {},
+                    ),
+                    SizedBox(height: 10.w),
+                    SSOLoginButton(
+                      "Apple로 시작하기",
+                      iconName: "apple",
+                      color: Colors.black,
+                      textColor: Colors.white,
+                      onPressed: () {},
+                    ),
+                    SizedBox(height: 56.w),
                   ],
                 ),
-                SizedBox(height: 21.45.w),
-                SSOLoginButton(
-                  "네이버로 시작하기",
-                  iconName: "naver",
-                  color: const Color(0xFF03C75A),
-                  textColor: Colors.white,
-                  onPressed: () {},
-                ),
-                SizedBox(height: 10.w),
-                SSOLoginButton(
-                  "Apple로 시작하기",
-                  iconName: "apple",
-                  color: Colors.black,
-                  textColor: Colors.white,
-                  onPressed: () {},
-                ),
-                SizedBox(height: 56.w),
-              ],
+              ),
             ),
-          );
-        });
+          ],
+        );
+      },
+    );
   }
 }
