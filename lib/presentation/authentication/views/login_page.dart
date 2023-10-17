@@ -23,7 +23,7 @@ class LoginPage extends StatelessWidget {
             ),
             SizedBox(height: 115.51.w),
             SSOLoginButton(
-              "카카오로 로그인",
+              "카카오로 시작하기",
               iconName: "kakao",
               color: const Color(0xFFFEE500),
               onPressed: () {
@@ -47,7 +47,7 @@ class LoginPage extends StatelessWidget {
     return showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
-      barrierColor: Colors.black.withOpacity(0.4),
+      barrierColor: Colors.black.withOpacity(0.6),
       elevation: 0,
       builder: (context) {
         return Column(
@@ -76,7 +76,7 @@ class LoginPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text("다른 방법으로 로그인", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w700)),
+                        Text("다른 방법으로 시작하기", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w700)),
                         SizedBox(width: 71.37.w),
                         GestureDetector(
                           onTap: () => Navigator.pop(context),
