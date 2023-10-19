@@ -20,6 +20,14 @@ class MainApp extends StatelessWidget {
       useInheritedMediaQuery: true,
       builder: (_, child) {
         return GetMaterialApp(
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+          ],
+          supportedLocales: const [
+            Locale('ko'),
+          ],
+          locale: const Locale('kr'),
           theme: ThemeData(
             fontFamily: 'Pretendard',
             useMaterial3: true,
