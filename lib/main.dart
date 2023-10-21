@@ -33,6 +33,7 @@ class MainApp extends StatelessWidget {
           theme: ThemeData(
             fontFamily: 'Pretendard',
             useMaterial3: true,
+            appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
             scaffoldBackgroundColor: Colors.white,
           ),
           builder: (context, child) {
