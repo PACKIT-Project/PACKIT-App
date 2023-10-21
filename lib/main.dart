@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:packit/app/config/app_binding.dart';
@@ -21,13 +22,14 @@ class MainApp extends StatelessWidget {
       builder: (_, child) {
         return GetMaterialApp(
           localizationsDelegates: const [
+            GlobalCupertinoLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
           ],
           supportedLocales: const [
             Locale('ko'),
           ],
-          locale: const Locale('kr'),
+          locale: const Locale('ko'),
           theme: ThemeData(
             fontFamily: 'Pretendard',
             useMaterial3: true,
