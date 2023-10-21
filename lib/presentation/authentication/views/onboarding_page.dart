@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/presentation/authentication/controller/onboarding_controller.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -65,12 +66,15 @@ class OnboardingPage extends StatelessWidget {
             padding: !controller.isFocus.value || MediaQuery.of(context).viewInsets.bottom == 0
                 ? EdgeInsets.fromLTRB(25.w, 16.35.w, 25.w, MediaQuery.of(context).viewInsets.bottom + 45.68.w)
                 : EdgeInsets.fromLTRB(25.w, 16.35.w, 25.w, MediaQuery.of(context).viewInsets.bottom + 16.35.w),
-            child: Container(
-              width: 340.w,
-              height: 50.w,
-              decoration: BoxDecoration(color: const Color(0xFF0094FF), borderRadius: BorderRadius.circular(8)),
-              child: Center(
-                child: Text("완료", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: Colors.white)),
+            child: GestureDetector(
+              onTap: () => Get.toNamed(RoutePath.selectDate),
+              child: Container(
+                width: 340.w,
+                height: 50.w,
+                decoration: BoxDecoration(color: const Color(0xFF0094FF), borderRadius: BorderRadius.circular(8)),
+                child: Center(
+                  child: Text("완료", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: Colors.white)),
+                ),
               ),
             ),
           );
