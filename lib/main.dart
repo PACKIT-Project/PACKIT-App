@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 import 'package:packit/app/config/app_binding.dart';
 import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/app/config/routes/routes.dart';
 
-void main() {
+void main() async {
+  // Locale
+  await initializeDateFormatting();
+  Intl.defaultLocale = 'ko_KR';
+
   runApp(const MainApp());
 }
 
@@ -27,9 +33,9 @@ class MainApp extends StatelessWidget {
             GlobalWidgetsLocalizations.delegate,
           ],
           supportedLocales: const [
-            Locale('ko'),
+            Locale('ko', 'KR'),
           ],
-          locale: const Locale('ko'),
+          locale: const Locale('ko', 'KR'),
           theme: ThemeData(
             fontFamily: 'Pretendard',
             useMaterial3: true,
