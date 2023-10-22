@@ -48,6 +48,7 @@ class MainApp extends StatelessWidget {
               child: child!,
             );
           },
+          defaultTransition: Transition.fadeIn,
           initialBinding: AppBinding(),
           initialRoute: RoutePath.login,
           getPages: Routes.routes,
