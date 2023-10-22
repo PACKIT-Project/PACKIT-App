@@ -1,7 +1,9 @@
 class RoutePath {
   // Authentication
   static const String login = "/login";
-  static const String onboarding = "/onboarding";
+
+  // Onboarding
+  static const String setProfile = "/set_profile";
 
   // Tour
   static const String selectDate = "/select_date";
