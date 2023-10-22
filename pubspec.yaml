@@ -30,23 +30,23 @@ flutter:
     - assets/images/
 
   fonts:
-    - family: Pretendard
+    - family: SUIT
       fonts:
-        - asset: assets/font/Pretendard-Thin.otf
+        - asset: assets/font/SUIT-Thin.ttf
           weight: 100
-        - asset: assets/font/Pretendard-ExtraLight.otf
+        - asset: assets/font/SUIT-ExtraLight.ttf
           weight: 200
-        - asset: assets/font/Pretendard-Light.otf
+        - asset: assets/font/SUIT-Light.ttf
           weight: 300
-        - asset: assets/font/Pretendard-Regular.otf
+        - asset: assets/font/SUIT-Regular.ttf
           weight: 400
-        - asset: assets/font/Pretendard-Medium.otf
+        - asset: assets/font/SUIT-Medium.ttf
           weight: 500
-        - asset: assets/font/Pretendard-SemiBold.otf
+        - asset: assets/font/SUIT-SemiBold.ttf
           weight: 600
-        - asset: assets/font/Pretendard-Bold.otf
+        - asset: assets/font/SUIT-Bold.ttf
           weight: 700
-        - asset: assets/font/Pretendard-ExtraBold.otf
+        - asset: assets/font/SUIT-ExtraBold.ttf
           weight: 800
-        - asset: assets/font/Pretendard-Black.otf
+        - asset: assets/font/SUIT-Heavy.ttf
           weight: 900

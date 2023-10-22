@@ -37,7 +37,7 @@ class MainApp extends StatelessWidget {
           ],
           locale: const Locale('ko', 'KR'),
           theme: ThemeData(
-            fontFamily: 'Pretendard',
+            fontFamily: 'SUIT',
             useMaterial3: true,
             appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
             scaffoldBackgroundColor: Colors.white,
