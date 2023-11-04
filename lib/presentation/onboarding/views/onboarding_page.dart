@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:packit/app/config/routes/route_path.dart';
 
 import '../widget/delayed_animation.dart';
-import '../widget/packit_button.dart';
+import '../../widget/packit_button.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
@@ -36,7 +36,7 @@ class OnboardingPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 158.69.h),
-            PackitButton("시작하기", onTap: () => Navigator.pushNamed(context, RoutePath.setProfile)),
+            PackitButton("시작하기", onTap: () => Navigator.pushNamed(context, RoutePath.login)),
             SizedBox(height: 27.69.h),
           ],
         ),

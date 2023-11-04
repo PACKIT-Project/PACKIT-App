@@ -6,7 +6,8 @@ class ProfileController extends GetxController {
   final FocusNode nickNameTextFocus = FocusNode();
 
   RxBool isFocus = false.obs;
-  RxBool isNickEmpty = true.obs;
+  RxBool isNickValid = false.obs;
+  RxBool isValidatorEnable = false.obs;
 
   @override
   void onClose() {

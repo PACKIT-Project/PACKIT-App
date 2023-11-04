@@ -5,7 +5,7 @@ class PackitButton extends StatelessWidget {
   const PackitButton(this.text, {super.key, required this.onTap, this.color});
 
   final String text;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final Color? color;
 
   @override
