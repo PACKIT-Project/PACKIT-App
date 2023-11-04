@@ -27,7 +27,7 @@ class LoginPage extends StatelessWidget {
               iconName: "kakao",
               color: const Color(0xFFFEE500),
               onPressed: () {
-                Navigator.pushNamed(context, RoutePath.setProfile);
+                Navigator.pushNamed(context, RoutePath.onboarding);
               },
             ),
             SizedBox(height: 10.h),

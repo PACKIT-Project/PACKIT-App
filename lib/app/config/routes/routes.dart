@@ -2,6 +2,7 @@ import 'package:get/route_manager.dart';
 import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/presentation/authentication/views/login_page.dart';
 import 'package:packit/presentation/onboarding/controller/onboarding_binding.dart';
+import 'package:packit/presentation/onboarding/views/onboarding_page.dart';
 import 'package:packit/presentation/onboarding/views/profile_page.dart';
 import 'package:packit/presentation/tour/controller/tour_binding.dart';
 import 'package:packit/presentation/tour/views/select_date_page.dart';
@@ -13,10 +14,16 @@ class Routes {
       name: RoutePath.login,
       page: () => const LoginPage(),
     ),
+
+    // Onboarding
+    GetPage(
+      name: RoutePath.onboarding,
+      page: () => const OnboardingPage(),
+      binding: OnboardingBinding(),
+    ),
     GetPage(
       name: RoutePath.setProfile,
       page: () => const SetProfilePage(),
-      binding: OnboardingBinding(),
     ),
 
     // Tour

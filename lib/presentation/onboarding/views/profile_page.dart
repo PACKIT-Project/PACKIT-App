@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:packit/app/config/routes/route_path.dart';
 
-import '../controller/onboarding_controller.dart';
+import '../controller/profile_controller.dart';
 
 class SetProfilePage extends StatelessWidget {
   const SetProfilePage({super.key});
@@ -70,7 +70,7 @@ class SetProfilePage extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: GetX<OnboardingController>(
+      bottomNavigationBar: GetX<ProfileController>(
         builder: (controller) {
           return Padding(
             padding: !controller.isFocus.value || MediaQuery.of(context).viewInsets.bottom == 0
@@ -94,7 +94,7 @@ class SetProfilePage extends StatelessWidget {
   }
 }
 
-class _NickNameTextField extends GetView<OnboardingController> {
+class _NickNameTextField extends GetView<ProfileController> {
   const _NickNameTextField();
 
   @override

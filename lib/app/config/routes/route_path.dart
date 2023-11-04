@@ -3,6 +3,7 @@ class RoutePath {
   static const String login = "/login";
 
   // Onboarding
+  static const String onboarding = "/onboarding";
   static const String setProfile = "/set_profile";
 
   // Tour

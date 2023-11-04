@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class OnboardingController extends GetxController {
+class ProfileController extends GetxController {
   final TextEditingController nickNameTextController = TextEditingController();
   final FocusNode nickNameTextFocus = FocusNode();
 
