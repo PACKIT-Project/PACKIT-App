@@ -72,25 +72,27 @@ class SetProfilePage extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: GetX<ProfileController>(
-        builder: (controller) {
-          return Padding(
-            padding: !controller.isFocus.value || MediaQuery.of(context).viewInsets.bottom == 0
-                ? EdgeInsets.fromLTRB(25.w, 16.35.w, 25.w, MediaQuery.of(context).viewInsets.bottom + 45.68.w)
-                : EdgeInsets.fromLTRB(25.w, 16.35.w, 25.w, MediaQuery.of(context).viewInsets.bottom + 16.35.w),
-            child: PackitButton(
-              "프로필 만들기",
-              onTap: controller.isNickValid.value ? () => Get.toNamed(RoutePath.selectDate) : null,
-              color: controller.isNickValid.value ? const Color(0xFF02B2FF) : const Color(0xFFBFEBFF),
-            ),
-          );
-        },
+      bottomNavigationBar: SafeArea(
+        child: GetX<ProfileController>(
+          builder: (controller) {
+            return Padding(
+              padding: !controller.isFocus.value || MediaQuery.of(context).viewInsets.bottom == 0
+                  ? EdgeInsets.fromLTRB(25.w, 16.35.w, 25.w, MediaQuery.of(context).viewInsets.bottom + 27.69.w)
+                  : EdgeInsets.fromLTRB(25.w, 16.35.w, 25.w, MediaQuery.of(context).viewInsets.bottom + 27.69.w),
+              child: PackitButton(
+                "프로필 만들기",
+                onTap: controller.isNickValid.value ? () => Get.toNamed(RoutePath.selectRegion) : null,
+                color: controller.isNickValid.value ? const Color(0xFF02B2FF) : const Color(0xFFBFEBFF),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
 }
 
-class _NickNameTextField extends GetView<ProfileController> {
+class _NickNameTextField extends GetView<TourController> {
   const _NickNameTextField();
 
   @override
@@ -105,7 +107,7 @@ class _NickNameTextField extends GetView<ProfileController> {
                 onFocusChange: (value) => controller.isFocus.value = value,
                 child: TextField(
                   controller: controller.nickNameTextController,
-                  focusNode: controller.nickNameTextFocus,
+                  focusNode: controller.textFieldFocus,
                   style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
                   scrollPadding: const EdgeInsets.only(bottom: 150),
                   decoration: InputDecoration(
