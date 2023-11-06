@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/presentation/widget/packit_button.dart';
 
 import '../controller/tour_controller.dart';
@@ -44,7 +45,7 @@ class SelectPartyPage extends StatelessWidget {
             SizedBox(height: 12.h),
             const _SelectPartyWidget("여러명이서 떠나요!", icon: 'party.svg', isParty: true),
             const Spacer(),
-            Center(child: PackitButton("다음", onTap: () {})),
+            Center(child: PackitButton("다음", onTap: () => Get.toNamed(RoutePath.checkTourInformation))),
             SizedBox(height: 28.69.h),
           ],
         ),

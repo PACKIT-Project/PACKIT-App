@@ -10,4 +10,5 @@ class RoutePath {
   static const String selectDate = "/select_date";
   static const String selectParty = "/select_party";
   static const String selectRegion = "/select_region";
+  static const String checkTourInformation = "/tour_check";
 }
