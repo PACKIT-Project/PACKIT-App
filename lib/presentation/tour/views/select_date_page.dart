@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:packit/app/config/routes/route_path.dart';
+import 'package:packit/presentation/widget/packit_button.dart';
 
 import '../controller/calendar_controller.dart';
 import '../widget/calendar_widget.dart';
@@ -12,17 +15,36 @@ class SelectDatePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
+      body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 13.h),
-            const Text("언제 여행을 떠나시나요?", style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w600)),
-            SizedBox(height: 23.64.h),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 17.w),
+              padding: EdgeInsets.fromLTRB(15.67.w, 19.h, 23.5.w, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: SvgPicture.asset('assets/icons/arrow_back.svg', width: 24.w, height: 24.h),
+                  ),
+                  Row(
+                    children: [
+                      Text("2", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w400, color: const Color(0xFF02B2FF))),
+                      Text("/3", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w400, color: const Color(0xFF6B7684))),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 12.67.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: const Text("언제 여행을\n떠나시나요?", style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w700)),
+            ),
+            SizedBox(height: 28.8.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 37.w, vertical: 10.h),
               child: Column(
                 children: [
                   const CalendarWidget(),
@@ -35,6 +57,22 @@ class SelectDatePage extends StatelessWidget {
             ),
             const Spacer(),
           ],
+        ),
+      ),
+      bottomNavigationBar: SafeArea(
+        child: GetX<CalendarController>(
+          builder: (controller) {
+            bool isDateSelected = controller.rangeStart.value != null && controller.rangeEnd.value != null;
+
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 28.69.h),
+              child: PackitButton(
+                "다음",
+                onTap: isDateSelected ? () => Get.toNamed(RoutePath.selectParty) : null,
+                color: isDateSelected ? const Color(0xFF02B2FF) : const Color(0xFFBFEBFF),
+              ),
+            );
+          },
         ),
       ),
     );
