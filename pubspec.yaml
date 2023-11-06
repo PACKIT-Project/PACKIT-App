@@ -29,6 +29,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/icons/onboarding/
+    - assets/icons/tour/
     - assets/images/
 
   fonts:
