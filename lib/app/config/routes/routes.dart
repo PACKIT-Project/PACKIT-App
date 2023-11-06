@@ -9,6 +9,7 @@ import 'package:packit/presentation/tour/views/check_tour_information_page.dart'
 import 'package:packit/presentation/tour/views/select_date_page.dart';
 import 'package:packit/presentation/tour/views/select_party_page.dart';
 import 'package:packit/presentation/tour/views/select_region_page.dart';
+import 'package:packit/presentation/tour/views/tour_invite_page.dart';
 
 class Routes {
   static List<GetPage> routes = [
@@ -46,6 +47,10 @@ class Routes {
     GetPage(
       name: RoutePath.checkTourInformation,
       page: () => CheckTourInformationPage(),
+    ),
+    GetPage(
+      name: RoutePath.tourInvite,
+      page: () => const TourInvitePage(),
     ),
   ];
 }

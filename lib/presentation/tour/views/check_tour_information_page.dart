@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/presentation/widget/packit_button.dart';
 
 import '../controller/calendar_controller.dart';
@@ -104,7 +105,7 @@ class CheckTourInformationPage extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 28.69.h),
           child: PackitButton(
             "여행 생성 완료하기",
-            onTap: () => Get.toNamed("/tour/complete"),
+            onTap: () => Get.toNamed(RoutePath.tourInvite),
           ),
         ),
       ),
