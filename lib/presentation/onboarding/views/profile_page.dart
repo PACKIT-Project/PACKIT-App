@@ -6,7 +6,7 @@ import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/app/extension/input_validate.dart';
 import 'package:packit/presentation/widget/packit_button.dart';
 
-import '../controller/profile_controller.dart';
+import '../controller/onboarding_controller.dart';
 
 class SetProfilePage extends StatelessWidget {
   const SetProfilePage({super.key});
@@ -73,7 +73,7 @@ class SetProfilePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: SafeArea(
-        child: GetX<ProfileController>(
+        child: GetX<OnboardingController>(
           builder: (controller) {
             return Padding(
               padding: !controller.isFocus.value || MediaQuery.of(context).viewInsets.bottom == 0
@@ -92,7 +92,7 @@ class SetProfilePage extends StatelessWidget {
   }
 }
 
-class _NickNameTextField extends GetView<TourController> {
+class _NickNameTextField extends GetView<OnboardingController> {
   const _NickNameTextField();
 
   @override

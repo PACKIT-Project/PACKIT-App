@@ -6,6 +6,7 @@ import 'package:packit/presentation/onboarding/views/onboarding_page.dart';
 import 'package:packit/presentation/onboarding/views/profile_page.dart';
 import 'package:packit/presentation/tour/controller/tour_binding.dart';
 import 'package:packit/presentation/tour/views/select_date_page.dart';
+import 'package:packit/presentation/tour/views/select_region_page.dart';
 
 class Routes {
   static List<GetPage> routes = [
@@ -26,11 +27,15 @@ class Routes {
       page: () => const SetProfilePage(),
     ),
 
-    // Tour
+    // Add Tour
+    GetPage(
+      name: RoutePath.selectRegion,
+      page: () => const SelectRegionPage(),
+      binding: TourBinding(),
+    ),
     GetPage(
       name: RoutePath.selectDate,
       page: () => const SelectDatePage(),
-      binding: TourBinding(),
     ),
   ];
 }
