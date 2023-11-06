@@ -69,11 +69,11 @@ class SelectRegionPage extends GetView<TourController> {
         child: GetX<TourController>(
           builder: (controller) {
             return Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 28.69.h),
+              padding: EdgeInsets.symmetric(vertical: 28.69.h),
               child: PackitButton(
                 "다음",
                 onTap: controller.selectedRegion.value.isNotEmpty ? () => Get.toNamed(RoutePath.selectDate) : null,
-                color: controller.selectedRegion.value.isNotEmpty ? const Color(0xFF02B2FF) : const Color(0xFFBFEBFF),
+                color: controller.selectedRegion.value.isNotEmpty ? null : const Color(0xFFBFEBFF),
               ),
             );
           },

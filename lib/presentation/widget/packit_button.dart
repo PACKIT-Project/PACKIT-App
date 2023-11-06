@@ -10,14 +10,17 @@ class PackitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 340.w,
-        height: 50.h,
-        decoration: BoxDecoration(color: color ?? const Color(0xFF0AB6FF), borderRadius: BorderRadius.circular(8)),
-        child: Center(
-          child: Text(text, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700, color: Colors.white)),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          width: double.maxFinite,
+          height: 50.h,
+          decoration: BoxDecoration(color: color ?? const Color(0xFF0EA8FF), borderRadius: BorderRadius.circular(8)),
+          child: Center(
+            child: Text(text, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700, color: Colors.white)),
+          ),
         ),
       ),
     );

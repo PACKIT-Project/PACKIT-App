@@ -77,12 +77,12 @@ class SetProfilePage extends StatelessWidget {
           builder: (controller) {
             return Padding(
               padding: !controller.isFocus.value || MediaQuery.of(context).viewInsets.bottom == 0
-                  ? EdgeInsets.fromLTRB(25.w, 16.35.w, 25.w, MediaQuery.of(context).viewInsets.bottom + 27.69.w)
-                  : EdgeInsets.fromLTRB(25.w, 16.35.w, 25.w, MediaQuery.of(context).viewInsets.bottom + 27.69.w),
+                  ? EdgeInsets.only(top: 16.35.w, bottom: MediaQuery.of(context).viewInsets.bottom + 27.69.w)
+                  : EdgeInsets.only(top: 16.35.w, bottom: MediaQuery.of(context).viewInsets.bottom + 27.69.w),
               child: PackitButton(
                 "프로필 만들기",
                 onTap: controller.isNickValid.value ? () => Get.toNamed(RoutePath.selectRegion) : null,
-                color: controller.isNickValid.value ? const Color(0xFF02B2FF) : const Color(0xFFBFEBFF),
+                color: controller.isNickValid.value ? null : const Color(0xFFBFEBFF),
               ),
             );
           },

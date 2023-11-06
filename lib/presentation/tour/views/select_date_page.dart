@@ -65,11 +65,11 @@ class SelectDatePage extends StatelessWidget {
             bool isDateSelected = controller.rangeStart.value != null && controller.rangeEnd.value != null;
 
             return Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 28.69.h),
+              padding: EdgeInsets.symmetric(vertical: 28.69.h),
               child: PackitButton(
                 "다음",
                 onTap: isDateSelected ? () => Get.toNamed(RoutePath.selectParty) : null,
-                color: isDateSelected ? const Color(0xFF02B2FF) : const Color(0xFFBFEBFF),
+                color: isDateSelected ? null : const Color(0xFFBFEBFF),
               ),
             );
           },
