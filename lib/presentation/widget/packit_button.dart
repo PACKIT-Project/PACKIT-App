@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:packit/app/config/app_color.dart';
 
 class PackitButton extends StatelessWidget {
-  const PackitButton(this.text, {super.key, required this.onTap, this.color});
+  const PackitButton(this.text, {super.key, required this.onTap});
 
   final String text;
   final VoidCallback? onTap;
-  final Color? color;
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +16,9 @@ class PackitButton extends StatelessWidget {
         onTap: onTap,
         child: Container(
           width: double.maxFinite,
-          height: 54.h,
-          decoration: BoxDecoration(color: color ?? const Color(0xFF0EA8FF), borderRadius: BorderRadius.circular(8)),
+          height: 54.w,
+          decoration:
+              BoxDecoration(color: onTap != null ? AppColor.mainBlue : AppColor.mainBlueInActive, borderRadius: BorderRadius.circular(8)),
           child: Center(
             child: Text(text, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700, color: Colors.white)),
           ),
