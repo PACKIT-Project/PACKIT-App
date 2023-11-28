@@ -15,10 +15,10 @@ class AppColor {
 
   // Gray(UI, Component)
   static const Color gray1 = Color(0xFFF5F7FD);
-  static const Color gray2 = Color(0xFFF5F7FD);
-  static const Color gray3 = Color(0xFFF5F7FD);
-  static const Color gray4 = Color(0xFFF5F7FD);
-  static const Color gray5 = Color(0xFFF5F7FD);
+  static const Color gray2 = Color(0xFFE9ECF0);
+  static const Color gray3 = Color(0xFFD0D9E3);
+  static const Color gray4 = Color(0xFF9FA8B3);
+  static const Color gray5 = Color(0xFF8E99A6);
 
   // Alert
   static const Color alert = Color(0xFFFF3049);
