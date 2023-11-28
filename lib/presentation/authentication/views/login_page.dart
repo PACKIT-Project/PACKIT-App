@@ -26,9 +26,7 @@ class LoginPage extends StatelessWidget {
               "카카오로 시작하기",
               iconName: "kakao",
               color: const Color(0xFFFEE500),
-              onPressed: () {
-                Navigator.pushNamed(context, RoutePath.setProfile);
-              },
+              onPressed: () => Get.toNamed(RoutePath.term),
             ),
             SizedBox(height: 10.h),
             SSOLoginButton(

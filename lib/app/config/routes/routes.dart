@@ -4,6 +4,7 @@ import 'package:packit/presentation/authentication/views/login_page.dart';
 import 'package:packit/presentation/onboarding/controller/onboarding_binding.dart';
 import 'package:packit/presentation/onboarding/views/onboarding_page.dart';
 import 'package:packit/presentation/onboarding/views/profile_page.dart';
+import 'package:packit/presentation/onboarding/views/term_page.dart';
 import 'package:packit/presentation/tour/controller/tour_binding.dart';
 import 'package:packit/presentation/tour/views/check_tour_information_page.dart';
 import 'package:packit/presentation/tour/views/select_date_page.dart';
@@ -28,6 +29,10 @@ class Routes {
     GetPage(
       name: RoutePath.setProfile,
       page: () => const SetProfilePage(),
+    ),
+    GetPage(
+      name: RoutePath.term,
+      page: () => const TermPage(),
     ),
 
     // Add Tour
