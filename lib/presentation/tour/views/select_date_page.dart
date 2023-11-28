@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/routes/route_path.dart';
+import 'package:packit/presentation/widget/packit_appbar.dart';
 import 'package:packit/presentation/widget/packit_button.dart';
 
 import '../controller/calendar_controller.dart';
@@ -15,64 +16,51 @@ class SelectDatePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const PackitAppBar(),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: 11.64.w),
             Padding(
-              padding: EdgeInsets.fromLTRB(15.67.w, 19.h, 23.5.w, 0),
+              padding: EdgeInsets.symmetric(horizontal: 25.w),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: SvgPicture.asset('assets/icons/arrow_back.svg', width: 24.w, height: 24.h),
-                  ),
+                  Text("언제 여행을\n떠나시나요?", style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.w700)),
+                  const Spacer(),
                   Row(
                     children: [
-                      Text("2", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w400, color: const Color(0xFF02B2FF))),
-                      Text("/3", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w400, color: const Color(0xFF6B7684))),
+                      Text("2", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: AppColor.mainBlue)),
+                      Text("/3", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: const Color(0xFF6B7684))),
                     ],
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 12.67.h),
+            SizedBox(height: 29.81.w),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: const Text("언제 여행을\n떠나시나요?", style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w700)),
-            ),
-            SizedBox(height: 28.8.h),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 37.w, vertical: 10.h),
+              padding: EdgeInsets.symmetric(horizontal: 37.w, vertical: 10.w),
               child: Column(
                 children: [
                   const CalendarWidget(),
-                  SizedBox(height: 16.h),
-                  Divider(height: 1.h, color: const Color(0xFFDBDBDB)),
-                  SizedBox(height: 23.64.h),
+                  SizedBox(height: 16.w),
+                  Divider(height: 1.w, color: const Color(0xFFDBDBDB)),
+                  SizedBox(height: 23.33.w),
                   const _FromToWidget(),
                 ],
               ),
             ),
             const Spacer(),
-          ],
-        ),
-      ),
-      bottomNavigationBar: SafeArea(
-        child: GetX<CalendarController>(
-          builder: (controller) {
-            bool isDateSelected = controller.rangeStart.value != null && controller.rangeEnd.value != null;
+            GetX<CalendarController>(
+              builder: (controller) {
+                bool isDateSelected = controller.rangeStart.value != null && controller.rangeEnd.value != null;
 
-            return Padding(
-              padding: EdgeInsets.symmetric(vertical: 28.69.h),
-              child: PackitButton(
-                "다음",
-                onTap: isDateSelected ? () => Get.toNamed(RoutePath.selectParty) : null,
-                color: isDateSelected ? null : const Color(0xFFBFEBFF),
-              ),
-            );
-          },
+                return PackitButton("다음", onTap: isDateSelected ? () => Get.toNamed(RoutePath.checkTourInformation) : null);
+              },
+            ),
+            SizedBox(height: 28.w),
+          ],
         ),
       ),
     );

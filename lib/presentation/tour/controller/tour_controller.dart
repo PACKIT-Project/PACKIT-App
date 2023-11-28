@@ -3,10 +3,9 @@ import 'package:get/get.dart';
 
 class TourController extends GetxController {
   final TextEditingController regionTextController = TextEditingController();
+  final TextEditingController tourTitleTextController = TextEditingController();
   final FocusNode textFieldFocus = FocusNode();
 
-  RxInt modalPartyNumber = 2.obs;
-  RxInt selectedPartyNumber = 1.obs;
   RxString selectedRegion = "".obs;
 
   RxBool isFocus = false.obs;
