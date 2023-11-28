@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/routes/route_path.dart';
+import 'package:packit/presentation/widget/packit_appbar.dart';
 import 'package:packit/presentation/widget/packit_button.dart';
 
 import '../controller/calendar_controller.dart';
@@ -18,18 +20,12 @@ class CheckTourInformationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const PackitAppBar(),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: EdgeInsets.only(left: 15.67.w, top: 19.h),
-              child: GestureDetector(
-                onTap: () => Navigator.pop(context),
-                child: SvgPicture.asset('assets/icons/arrow_back.svg', width: 24.w, height: 24.h),
-              ),
-            ),
-            SizedBox(height: 29.68.h),
+            SizedBox(height: 11.64.w),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 22.w),
               child: Column(
@@ -41,9 +37,9 @@ class CheckTourInformationPage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 30.sp,
                           fontWeight: FontWeight.w700,
-                          color: const Color(0xFF02B2FF),
+                          color: AppColor.mainBlue,
                           decoration: TextDecoration.underline,
-                          decorationColor: const Color(0xFF02B2FF),
+                          decorationColor: AppColor.mainBlue,
                         ),
                       ),
                       Text(" 로", style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w700))
@@ -56,9 +52,9 @@ class CheckTourInformationPage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 30.sp,
                           fontWeight: FontWeight.w700,
-                          color: const Color(0xFF02B2FF),
+                          color: AppColor.mainBlue,
                           decoration: TextDecoration.underline,
-                          decorationColor: const Color(0xFF02B2FF),
+                          decorationColor: AppColor.mainBlue,
                         ),
                       ),
                       Text(" 까지", style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w700))
@@ -71,42 +67,24 @@ class CheckTourInformationPage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 30.sp,
                           fontWeight: FontWeight.w700,
-                          color: const Color(0xFF02B2FF),
+                          color: AppColor.mainBlue,
                           decoration: TextDecoration.underline,
-                          decorationColor: const Color(0xFF02B2FF),
+                          decorationColor: AppColor.mainBlue,
                         ),
                       ),
-                      Text(" 여행을", style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w700))
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        "${_tourController.selectedPartyNumber.value}명",
-                        style: TextStyle(
-                          fontSize: 30.sp,
-                          fontWeight: FontWeight.w700,
-                          color: const Color(0xFF02B2FF),
-                          decoration: TextDecoration.underline,
-                          decorationColor: const Color(0xFF02B2FF),
-                        ),
-                      ),
-                      Text(" 의 인원으로 떠나시나요?", style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w700))
+                      Text(" 여행을 떠나시나요?", style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.w700))
                     ],
                   ),
                 ],
               ),
             ),
+            const Spacer(),
+            const PackitButton(
+              "여행 생성하기",
+              onTap: null,
+            ),
+            SizedBox(height: 28.w),
           ],
-        ),
-      ),
-      bottomNavigationBar: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 28.69.h),
-          child: PackitButton(
-            "여행 생성 완료하기",
-            onTap: () => Get.toNamed(RoutePath.tourInvite),
-          ),
         ),
       ),
     );
