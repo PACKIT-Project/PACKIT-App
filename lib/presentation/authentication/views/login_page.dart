@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/routes/route_path.dart';
 
 import '../widget/sso_login_button.dart';
@@ -15,11 +17,11 @@ class LoginPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset("assets/images/packit.svg", width: 211.12405.w, height: 54.27002.h),
-            SizedBox(height: 17.10.h),
+            SvgPicture.asset("assets/images/packit.svg", width: 210.12.w, height: 54.27.w),
+            SizedBox(height: 17.16.h),
             Text(
               "빈틈없는 여행 준비의 시작",
-              style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
+              style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500, color: AppColor.coolGray300),
             ),
             SizedBox(height: 117.31.h),
             SSOLoginButton(

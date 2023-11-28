@@ -26,7 +26,7 @@ class SSOLoginButton extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         width: 316.w,
-        height: 54.h,
+        height: 54.w,
         decoration: BoxDecoration(
           border: border,
           borderRadius: BorderRadius.circular(8),
@@ -40,7 +40,7 @@ class SSOLoginButton extends StatelessWidget {
                 SvgPicture.asset(
                   "assets/icons/$iconName.svg",
                   width: 24.w,
-                  height: 24.h,
+                  height: 24.w,
                 ),
                 SizedBox(width: 6.w),
               ],
