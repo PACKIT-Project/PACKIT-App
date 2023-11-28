@@ -9,6 +9,8 @@ import 'package:packit/app/config/routes/route_path.dart';
 import '../widget/delayed_animation.dart';
 import '../../widget/packit_button.dart';
 
+final CarouselSliderController _carouselController = CarouselSliderController();
+
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
 
@@ -20,6 +22,7 @@ class OnboardingPage extends StatelessWidget {
           children: [
             Expanded(
               child: CarouselSlider.builder(
+                controller: _carouselController,
                 itemCount: 3,
                 unlimitedMode: true,
                 enableAutoSlider: true,
@@ -33,6 +36,10 @@ class OnboardingPage extends StatelessWidget {
                   } else {
                     return const OnboardingMessage2Widget();
                   }
+                },
+                onSlideChanged: (_) {
+                  _carouselController.setAutoSliderEnabled(false);
+                  _carouselController.setAutoSliderEnabled(true);
                 },
                 slideIndicator: CircularSlideIndicator(
                   indicatorRadius: 5.r,
@@ -207,7 +214,7 @@ class OnboardingMessage2Widget extends StatelessWidget {
           ),
           SizedBox(height: 5.4.h),
           DelayedAnimation(
-            delay: 2000,
+            delay: 1000,
             child: Row(
               children: [
                 SvgPicture.asset('assets/icons/onboarding/idea.svg', width: 50.w, height: 50.w),
@@ -221,12 +228,12 @@ class OnboardingMessage2Widget extends StatelessWidget {
           ),
           SizedBox(height: 8.4.h),
           DelayedAnimation(
-            delay: 3000,
+            delay: 2000,
             child: Text("LIVE", style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w900, color: AppColor.mainBlue)),
           ),
           SizedBox(height: 2.4.h),
           DelayedAnimation(
-            delay: 4000,
+            delay: 3000,
             child: Row(
               children: [
                 Text(
