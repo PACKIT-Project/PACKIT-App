@@ -13,11 +13,14 @@ class PackitAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       automaticallyImplyLeading: false,
       leadingWidth: 40.25.w,
-      leading: Row(
-        children: [
-          SizedBox(width: 24.68.w),
-          SvgPicture.asset('assets/icons/arrow_back.svg', width: 15.57.w, height: 15.16.h),
-        ],
+      leading: GestureDetector(
+        onTap: () => Navigator.pop(context),
+        child: Row(
+          children: [
+            SizedBox(width: 24.68.w),
+            SvgPicture.asset('assets/icons/arrow_back.svg', width: 15.57.w, height: 15.16.h),
+          ],
+        ),
       ),
       title: Text(title ?? ""),
       titleTextStyle: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w700, color: AppColor.coolGray400),
