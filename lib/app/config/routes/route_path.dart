@@ -5,6 +5,7 @@ class RoutePath {
   // Onboarding
   static const String onboarding = "/onboarding";
   static const String setProfile = "/set_profile";
+  static const String term = "/term";
 
   // Add Tour
   static const String selectDate = "/select_date";
