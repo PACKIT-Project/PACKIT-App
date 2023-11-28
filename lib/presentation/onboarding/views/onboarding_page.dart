@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_carousel_slider/carousel_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/routes/route_path.dart';
 
 import '../widget/delayed_animation.dart';
@@ -19,6 +21,10 @@ class OnboardingPage extends StatelessWidget {
             Expanded(
               child: CarouselSlider.builder(
                 itemCount: 3,
+                unlimitedMode: true,
+                enableAutoSlider: true,
+                autoSliderDelay: const Duration(seconds: 5),
+                autoSliderTransitionTime: const Duration(seconds: 1),
                 slideBuilder: (int index) {
                   if (index == 0) {
                     return const OnboardingMessage0Widget();
@@ -29,15 +35,16 @@ class OnboardingPage extends StatelessWidget {
                   }
                 },
                 slideIndicator: CircularSlideIndicator(
-                  indicatorRadius: 5,
-                  currentIndicatorColor: const Color(0xFF0AB6FF),
+                  indicatorRadius: 5.r,
+                  itemSpacing: 16.w,
+                  currentIndicatorColor: AppColor.mainBlue,
                   indicatorBackgroundColor: const Color(0xFFD9D9D9),
                 ),
               ),
             ),
             SizedBox(height: 158.69.h),
-            PackitButton("시작하기", onTap: () => Navigator.pushNamed(context, RoutePath.login)),
-            SizedBox(height: 27.69.h),
+            PackitButton("시작하기", onTap: () => Get.toNamed(RoutePath.login)),
+            SizedBox(height: 28.07.h),
           ],
         ),
       ),
@@ -58,12 +65,12 @@ class OnboardingMessage0Widget extends StatelessWidget {
         children: [
           SizedBox(height: 161.27.h),
           DelayedAnimation(
-            delay: 500,
+            delay: 0,
             child: Row(
               children: [
                 Text(
                   "빈틈없는",
-                  style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w800, color: const Color(0xFF071A49)),
+                  style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w800, color: AppColor.coolGray400),
                 ),
                 SizedBox(width: 11.w),
                 SvgPicture.asset('assets/icons/onboarding/clock.svg', width: 50.w, height: 50.w),
@@ -79,24 +86,24 @@ class OnboardingMessage0Widget extends StatelessWidget {
                 SizedBox(width: 11.w),
                 Text(
                   "여행의 시작",
-                  style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w900, color: const Color(0xFF071A49)),
+                  style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w900, color: AppColor.coolGray400),
                 ),
               ],
             ),
           ),
           SizedBox(height: 8.4.h),
           DelayedAnimation(
-            delay: 1500,
-            child: Text("EASY", style: TextStyle(fontSize: 46.sp, fontWeight: FontWeight.w900, color: const Color(0xFF0A98FF))),
+            delay: 2000,
+            child: Text("EASY", style: TextStyle(fontSize: 46.sp, fontWeight: FontWeight.w900, color: AppColor.mainBlue)),
           ),
           SizedBox(height: 2.4.h),
           DelayedAnimation(
-            delay: 2000,
+            delay: 3000,
             child: Row(
               children: [
                 Text(
                   "TRIP PREP",
-                  style: TextStyle(fontSize: 46.sp, fontWeight: FontWeight.w900, color: const Color(0xFF0A98FF)),
+                  style: TextStyle(fontSize: 46.sp, fontWeight: FontWeight.w900, color: AppColor.mainBlue),
                 ),
                 SizedBox(width: 9.w),
                 SvgPicture.asset('assets/icons/onboarding/plane.svg', width: 50.w, height: 50.w),
@@ -122,12 +129,12 @@ class OnboardingMessage1Widget extends StatelessWidget {
         children: [
           SizedBox(height: 161.27.h),
           DelayedAnimation(
-            delay: 500,
+            delay: 0,
             child: Row(
               children: [
                 Text(
                   "동행자와",
-                  style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w800, color: const Color(0xFF071A49)),
+                  style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w800, color: AppColor.coolGray400),
                 ),
                 SizedBox(width: 11.w),
                 SvgPicture.asset('assets/icons/onboarding/handshake.svg', width: 50.w, height: 50.w),
@@ -143,24 +150,24 @@ class OnboardingMessage1Widget extends StatelessWidget {
                 SizedBox(width: 11.w),
                 Text(
                   "함께 만드는",
-                  style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w900, color: const Color(0xFF071A49)),
+                  style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w900, color: AppColor.coolGray400),
                 ),
               ],
             ),
           ),
           SizedBox(height: 8.4.h),
           DelayedAnimation(
-            delay: 1500,
-            child: Text("GROUP", style: TextStyle(fontSize: 46.sp, fontWeight: FontWeight.w900, color: const Color(0xFF0A98FF))),
+            delay: 2000,
+            child: Text("GROUP", style: TextStyle(fontSize: 46.sp, fontWeight: FontWeight.w900, color: AppColor.mainBlue)),
           ),
           SizedBox(height: 2.4.h),
           DelayedAnimation(
-            delay: 2000,
+            delay: 3000,
             child: Row(
               children: [
                 Text(
                   "CHECKLIST",
-                  style: TextStyle(fontSize: 46.sp, fontWeight: FontWeight.w900, color: const Color(0xFF0A98FF)),
+                  style: TextStyle(fontSize: 46.sp, fontWeight: FontWeight.w900, color: AppColor.mainBlue),
                 ),
                 SizedBox(width: 9.w),
                 SvgPicture.asset('assets/icons/onboarding/sign.svg', width: 50.w, height: 50.w),
@@ -186,12 +193,12 @@ class OnboardingMessage2Widget extends StatelessWidget {
         children: [
           SizedBox(height: 161.27.h),
           DelayedAnimation(
-            delay: 500,
+            delay: 0,
             child: Row(
               children: [
                 Text(
                   "실시간",
-                  style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w800, color: const Color(0xFF071A49)),
+                  style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w800, color: AppColor.coolGray400),
                 ),
                 SizedBox(width: 11.w),
                 SvgPicture.asset('assets/icons/onboarding/search.svg', width: 50.w, height: 50.w),
@@ -200,31 +207,31 @@ class OnboardingMessage2Widget extends StatelessWidget {
           ),
           SizedBox(height: 5.4.h),
           DelayedAnimation(
-            delay: 1000,
+            delay: 2000,
             child: Row(
               children: [
                 SvgPicture.asset('assets/icons/onboarding/idea.svg', width: 50.w, height: 50.w),
                 SizedBox(width: 11.w),
                 Text(
                   "여행지 정보",
-                  style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w900, color: const Color(0xFF071A49)),
+                  style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w900, color: AppColor.coolGray400),
                 ),
               ],
             ),
           ),
           SizedBox(height: 8.4.h),
           DelayedAnimation(
-            delay: 1500,
-            child: Text("LIVE", style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w900, color: const Color(0xFF0A98FF))),
+            delay: 3000,
+            child: Text("LIVE", style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w900, color: AppColor.mainBlue)),
           ),
           SizedBox(height: 2.4.h),
           DelayedAnimation(
-            delay: 2000,
+            delay: 4000,
             child: Row(
               children: [
                 Text(
                   "INSIGHT",
-                  style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w900, color: const Color(0xFF0A98FF)),
+                  style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w900, color: AppColor.mainBlue),
                 ),
                 SizedBox(width: 9.w),
                 SvgPicture.asset('assets/icons/onboarding/notice.svg', width: 50.w, height: 50.w),
