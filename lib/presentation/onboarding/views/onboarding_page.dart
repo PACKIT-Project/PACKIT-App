@@ -86,7 +86,7 @@ class OnboardingMessage0Widget extends StatelessWidget {
           ),
           SizedBox(height: 5.4.h),
           DelayedAnimation(
-            delay: 1000,
+            delay: 800,
             child: Row(
               children: [
                 SvgPicture.asset('assets/icons/onboarding/parasol.svg', width: 50.w, height: 50.w),
@@ -100,12 +100,12 @@ class OnboardingMessage0Widget extends StatelessWidget {
           ),
           SizedBox(height: 8.4.h),
           DelayedAnimation(
-            delay: 2000,
+            delay: 1600,
             child: Text("EASY", style: TextStyle(fontSize: 46.sp, fontWeight: FontWeight.w900, color: AppColor.mainBlue)),
           ),
           SizedBox(height: 2.4.h),
           DelayedAnimation(
-            delay: 3000,
+            delay: 2400,
             child: Row(
               children: [
                 Text(
@@ -150,7 +150,7 @@ class OnboardingMessage1Widget extends StatelessWidget {
           ),
           SizedBox(height: 5.4.h),
           DelayedAnimation(
-            delay: 1000,
+            delay: 800,
             child: Row(
               children: [
                 SvgPicture.asset('assets/icons/onboarding/memo.svg', width: 50.w, height: 50.w),
@@ -164,12 +164,12 @@ class OnboardingMessage1Widget extends StatelessWidget {
           ),
           SizedBox(height: 8.4.h),
           DelayedAnimation(
-            delay: 2000,
+            delay: 1600,
             child: Text("GROUP", style: TextStyle(fontSize: 46.sp, fontWeight: FontWeight.w900, color: AppColor.mainBlue)),
           ),
           SizedBox(height: 2.4.h),
           DelayedAnimation(
-            delay: 3000,
+            delay: 2400,
             child: Row(
               children: [
                 Text(
@@ -214,7 +214,7 @@ class OnboardingMessage2Widget extends StatelessWidget {
           ),
           SizedBox(height: 5.4.h),
           DelayedAnimation(
-            delay: 1000,
+            delay: 800,
             child: Row(
               children: [
                 SvgPicture.asset('assets/icons/onboarding/idea.svg', width: 50.w, height: 50.w),
@@ -228,12 +228,12 @@ class OnboardingMessage2Widget extends StatelessWidget {
           ),
           SizedBox(height: 8.4.h),
           DelayedAnimation(
-            delay: 2000,
+            delay: 1600,
             child: Text("LIVE", style: TextStyle(fontSize: 46.83.sp, fontWeight: FontWeight.w900, color: AppColor.mainBlue)),
           ),
           SizedBox(height: 2.4.h),
           DelayedAnimation(
-            delay: 3000,
+            delay: 2400,
             child: Row(
               children: [
                 Text(
