@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/routes/route_path.dart';
+import 'package:packit/presentation/home/views/home_page.dart';
 
 import '../widget/sso_login_button.dart';
 
@@ -36,7 +37,7 @@ class LoginPage extends StatelessWidget {
               iconName: "naver",
               color: const Color(0xFF03C75A),
               textColor: Colors.white,
-              onPressed: () {},
+              onPressed: () => Get.to(() => const HomePage()),
             ),
             SizedBox(height: 10.h),
             SSOLoginButton(
