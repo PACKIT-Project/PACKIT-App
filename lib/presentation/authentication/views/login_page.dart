@@ -27,7 +27,7 @@ class LoginPage extends StatelessWidget {
               "카카오로 시작하기",
               iconName: "kakao",
               color: const Color(0xFFFEE500),
-              onPressed: () async => LoginController.to.loginWithKakao(),
+              onPressed: () async => LoginController.to.login(SSOType.kakao),
             ),
             SizedBox(height: 10.h),
             SSOLoginButton(
@@ -43,7 +43,7 @@ class LoginPage extends StatelessWidget {
               iconName: "apple",
               color: Colors.black,
               textColor: Colors.white,
-              onPressed: () {},
+              onPressed: () async => LoginController.to.login(SSOType.apple),
             ),
           ],
         ),
