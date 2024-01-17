@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 import 'package:packit/app/config/app_binding.dart';
 import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/app/config/routes/routes.dart';
 
 void main() async {
+  // Ensure that the WidgetsBinding has been initialized
+  WidgetsFlutterBinding.ensureInitialized();
+
   // Locale
   await initializeDateFormatting();
   Intl.defaultLocale = 'ko_KR';
+
+  // Load .env file
+  await dotenv.load(fileName: ".env");
+
+  // Initialize Kakao SDK
+  KakaoSdk.init(nativeAppKey: dotenv.env['KAKAO_NATIVE_APP_KEY']!);
 
   runApp(const MainApp());
 }
