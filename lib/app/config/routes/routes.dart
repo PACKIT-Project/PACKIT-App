@@ -1,5 +1,6 @@
 import 'package:get/route_manager.dart';
 import 'package:packit/app/config/routes/route_path.dart';
+import 'package:packit/presentation/authentication/controller/login_binding.dart';
 import 'package:packit/presentation/authentication/views/login_page.dart';
 import 'package:packit/presentation/onboarding/controller/onboarding_binding.dart';
 import 'package:packit/presentation/onboarding/views/onboarding_page.dart';
@@ -17,6 +18,7 @@ class Routes {
     GetPage(
       name: RoutePath.login,
       page: () => const LoginPage(),
+      binding: LoginBinding(),
     ),
 
     // Onboarding

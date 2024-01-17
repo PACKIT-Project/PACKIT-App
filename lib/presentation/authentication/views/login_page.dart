@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 import 'package:packit/app/config/app_color.dart';
-import 'package:packit/app/config/routes/route_path.dart';
+import 'package:packit/presentation/authentication/controller/login_controller.dart';
 
 import '../widget/sso_login_button.dart';
 
@@ -28,7 +27,7 @@ class LoginPage extends StatelessWidget {
               "카카오로 시작하기",
               iconName: "kakao",
               color: const Color(0xFFFEE500),
-              onPressed: () => Get.toNamed(RoutePath.term),
+              onPressed: () async => LoginController.to.loginWithKakao(),
             ),
             SizedBox(height: 10.h),
             SSOLoginButton(
