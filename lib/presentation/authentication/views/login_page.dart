@@ -35,7 +35,7 @@ class LoginPage extends StatelessWidget {
               iconName: "naver",
               color: const Color(0xFF03C75A),
               textColor: Colors.white,
-              onPressed: () {},
+              onPressed: () async => LoginController.to.login(SSOType.naver),
             ),
             SizedBox(height: 10.h),
             SSOLoginButton(
