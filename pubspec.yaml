@@ -22,6 +22,7 @@ dependencies:
   intl: ^0.18.1
   json_annotation: ^4.8.1
   kakao_flutter_sdk: ^1.8.0
+  retrofit: ^4.0.3
   sign_in_with_apple: ^5.0.0
   table_calendar: ^3.0.9
 
@@ -32,6 +33,7 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.4.6
   json_serializable: ^6.7.1
+  retrofit_generator: ^8.0.6
 
 flutter:
   uses-material-design: true
