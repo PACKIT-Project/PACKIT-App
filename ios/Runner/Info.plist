@@ -47,6 +47,8 @@
 	</array>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>kakaokompassauth</string>
+		<string>kakaolink</string>
 		<string>naversearchapp</string>
 		<string>naversearchthirdlogin</string>
 	</array>
@@ -65,6 +67,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>kakao78936894b28ed82c20e094377d57d01f</string>
 				<string>packitNaverLoginScheme</string>
 			</array>
 		</dict>
