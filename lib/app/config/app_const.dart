@@ -1,3 +1,3 @@
 class AppConst {
-  static String baseUrl = "https://pack-it.site";
+  static String baseUrl = "https://pack-it.site/api";
 }
