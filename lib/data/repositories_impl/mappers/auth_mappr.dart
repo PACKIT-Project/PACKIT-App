@@ -7,6 +7,6 @@ import 'auth_mappr.auto_mappr.dart';
 
 @AutoMappr([
   MapType<LoginResponseModel, LoginResponse>(),
-  MapType<DataModel, Data>(),
+  MapType<LoginDataModel, LoginData>(),
 ])
 class AuthMappr extends $AuthMappr {}
