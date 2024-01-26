@@ -3,6 +3,7 @@ import 'package:flutter_naver_login/flutter_naver_login.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 import 'package:packit/app/config/routes/route_path.dart';
+import 'package:packit/app/service/auth_service.dart';
 import 'package:packit/domain/entities/login_response.dart';
 import 'package:packit/domain/entities/packit_login_entity.dart';
 import 'package:packit/domain/enum/member_status_enum.dart';
@@ -34,6 +35,7 @@ class LoginController extends GetxController {
         case MemberStatusEnum.active:
           break;
         case MemberStatusEnum.waitingToJoin:
+          AuthService.to.loginResponse = response;
           Get.toNamed(RoutePath.term);
           break;
         case MemberStatusEnum.delete:

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -31,31 +33,7 @@ class SetProfilePage extends StatelessWidget {
                   style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.w700),
                 ),
                 SizedBox(height: 89.77.w),
-                Center(
-                  child: Stack(
-                    children: [
-                      Image.asset("assets/images/avatar_placeholder.png", width: 100.w, height: 100.w),
-                      Positioned.fill(
-                        child: Align(
-                          alignment: Alignment.bottomRight,
-                          child: Container(
-                            width: 25.35.w,
-                            height: 25.35.w,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                width: 1,
-                                color: AppColor.gray2,
-                              ),
-                              color: Colors.white,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(Icons.camera_alt, color: const Color(0xFF536073), size: 14.w),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                const _ProfileImageWidget(),
                 SizedBox(height: 32.77.w),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -79,6 +57,49 @@ class SetProfilePage extends StatelessWidget {
               ),
             );
           },
+        ),
+      ),
+    );
+  }
+}
+
+class _ProfileImageWidget extends GetView<OnboardingController> {
+  const _ProfileImageWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: GestureDetector(
+        onTap: () async => await controller.setProfileImage(),
+        child: Stack(
+          children: [
+            Obx(
+              () => controller.profileImage.value!.path.isEmpty
+                  ? Image.asset("assets/images/avatar_placeholder.png", width: 100.w, height: 100.w)
+                  : ClipRRect(
+                      borderRadius: BorderRadius.circular(50.r),
+                      child: Image.file(File(controller.profileImage.value!.path), width: 100.w, height: 100.w, fit: BoxFit.cover),
+                    ),
+            ),
+            Positioned.fill(
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: Container(
+                  width: 25.35.w,
+                  height: 25.35.w,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      width: 1,
+                      color: AppColor.gray2,
+                    ),
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(Icons.camera_alt, color: const Color(0xFF536073), size: 14.w),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
