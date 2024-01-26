@@ -9,19 +9,19 @@ class LoginResponseModel with _$LoginResponseModel {
   const factory LoginResponseModel({
     required String message,
     required String timestamp,
-    required DataModel data,
+    required LoginDataModel data,
   }) = _LoginResponseModel;
 
   factory LoginResponseModel.fromJson(Map<String, Object?> json) => _$LoginResponseModelFromJson(json);
 }
 
 @freezed
-class DataModel with _$DataModel {
-  const factory DataModel({
+class LoginDataModel with _$LoginDataModel {
+  const factory LoginDataModel({
     required MemberStatusEnum memberStatus,
     required String accessToken,
     required String refreshToken,
-  }) = _DataModel;
+  }) = _LoginDataModel;
 
-  factory DataModel.fromJson(Map<String, Object?> json) => _$DataModelFromJson(json);
+  factory LoginDataModel.fromJson(Map<String, Object?> json) => _$LoginDataModelFromJson(json);
 }

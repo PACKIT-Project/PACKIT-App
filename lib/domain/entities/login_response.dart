@@ -10,19 +10,19 @@ class LoginResponse with _$LoginResponse {
   const factory LoginResponse({
     required String message,
     required String timestamp,
-    required Data data,
+    required LoginData data,
   }) = _LoginResponse;
 
   factory LoginResponse.fromJson(Map<String, Object?> json) => _$LoginResponseFromJson(json);
 }
 
 @freezed
-class Data with _$Data {
-  const factory Data({
+class LoginData with _$LoginData {
+  const factory LoginData({
     required MemberStatusEnum memberStatus,
     required String accessToken,
     required String refreshToken,
-  }) = _Data;
+  }) = _LoginData;
 
-  factory Data.fromJson(Map<String, Object?> json) => _$DataFromJson(json);
+  factory LoginData.fromJson(Map<String, Object?> json) => _$LoginDataFromJson(json);
 }
