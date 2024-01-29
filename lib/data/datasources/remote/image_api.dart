@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:packit/data/models/packit_response_model.dart';
 import 'package:retrofit/http.dart';
 
 import '../../models/image_response_model.dart';
@@ -13,5 +14,5 @@ abstract class ImageAPI {
 
   @POST('/images')
   @MultiPart()
-  Future<ImageResponseModel> uploadImage(@Part() File uploadImage);
+  Future<PackitResponseModel<ImageResponseModel>> uploadImage(@Part() File uploadImage);
 }

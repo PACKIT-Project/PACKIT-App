@@ -5,6 +5,7 @@ import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:packit/domain/entities/image_response.dart';
+import 'package:packit/domain/entities/packit_response.dart';
 import 'package:packit/domain/usecases/image_use_cases.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -53,11 +54,11 @@ class ImageUtil {
     }
   }
 
-  Future<ImageResponse?> uploadImage(XFile uploadImage) async {
+  Future<PackitResponse<ImageResponse>?> uploadImage(XFile uploadImage) async {
     UploadImageUseCase uploadImageUseCase = Get.find<ImageUseCases>().uploadImage;
 
     try {
-      ImageResponse response = await uploadImageUseCase.execute(uploadImage);
+      PackitResponse<ImageResponse> response = await uploadImageUseCase.execute(uploadImage);
 
       return response;
     } catch (e) {

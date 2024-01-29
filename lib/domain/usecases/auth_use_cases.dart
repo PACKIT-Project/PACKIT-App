@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 
 import '../entities/login_response.dart';
 import '../entities/packit_login_entity.dart';
+import '../entities/packit_response.dart';
 import '../repositories/auth_repository.dart';
 
 class AuthUseCases {
@@ -14,7 +15,7 @@ class LoginUseCase {
   final AuthRepository _repository;
   LoginUseCase(this._repository);
 
-  Future<LoginResponse> execute(PackitLoginEntity loginEntity) async {
+  Future<PackitResponse<LoginResponse>> execute(PackitLoginEntity loginEntity) async {
     return await _repository.login(loginEntity);
   }
 }
