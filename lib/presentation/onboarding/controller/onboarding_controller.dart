@@ -49,7 +49,6 @@ class OnboardingController extends GetxController {
 
   Future<void> validateNickname() async {
     if (nickNameTextController.text.length >= 2) {
-      isValidatorEnable.value = true;
       if (nickNameTextController.text.isValidNick()) {
         PackitResponse<CheckNickResponse> response = await memberUseCases.checkNickname.execute(nickNameTextController.text);
         if (!response.data.isDuplicated) {
@@ -60,6 +59,7 @@ class OnboardingController extends GetxController {
       } else {
         isNickValid.value = false;
       }
+      isValidatorEnable.value = true;
     } else {
       isValidatorEnable.value = false;
       isNickValid.value = false;
