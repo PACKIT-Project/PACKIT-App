@@ -87,7 +87,8 @@ class _RegionTextField extends GetView<TourController> {
                     child: SvgPicture.asset(
                       "assets/icons/search.svg",
                       width: 18.w,
-                      color: controller.isRegionExist.value ? AppColor.coolGray200 : AppColor.gray3,
+                      colorFilter:
+                          ColorFilter.mode(controller.isRegionExist.value ? AppColor.coolGray200 : AppColor.gray3, BlendMode.srcIn),
                     ),
                   ),
                   prefixIconConstraints: BoxConstraints(maxHeight: 18.h, maxWidth: 24.w),
