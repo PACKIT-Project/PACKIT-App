@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:packit/app/util/image_util.dart';
 import 'package:packit/domain/entities/image_response.dart';
+import 'package:packit/domain/entities/packit_response.dart';
 
 class OnboardingController extends GetxController {
   // Term
@@ -38,7 +39,7 @@ class OnboardingController extends GetxController {
 
   Future<void> setProfileImage() async {
     XFile? profileImage = await ImageUtil.instance.getImageFromGallery();
-    ImageResponse? response = await ImageUtil.instance.uploadImage(profileImage!);
+    PackitResponse<ImageResponse>? response = await ImageUtil.instance.uploadImage(profileImage!);
 
     if (response != null) {
       this.profileImage.value = profileImage;

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:packit/data/models/packit_response_model.dart';
 import 'package:packit/domain/entities/packit_login_entity.dart';
 import 'package:retrofit/http.dart';
 
@@ -11,5 +12,5 @@ abstract class AuthAPI {
   factory AuthAPI(Dio dioBuilder) = _AuthAPI;
 
   @POST('/auth/mobile/login')
-  Future<LoginResponseModel> login(@Body() PackitLoginEntity loginEntity);
+  Future<PackitResponseModel<LoginResponseModel>> login(@Body() PackitLoginEntity loginEntity);
 }

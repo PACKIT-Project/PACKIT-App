@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:packit/app/service/auth_service.dart';
 import 'package:packit/domain/entities/login_response.dart';
+import 'package:packit/domain/entities/packit_response.dart';
 
 class TokenInterceptor extends QueuedInterceptorsWrapper {
   final Dio _dio;
@@ -14,7 +15,7 @@ class TokenInterceptor extends QueuedInterceptorsWrapper {
     if (kDebugMode) print('onRequest TokenInterceptor ${options.uri}');
 
     try {
-      LoginResponse? response = AuthService.to.loginResponse;
+      PackitResponse<LoginResponse>? response = AuthService.to.loginResponse;
 
       if (response != null) {
         options.headers[_authHeaderKey] = 'Bearer ${response.data.accessToken}';
