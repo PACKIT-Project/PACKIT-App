@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_debouncer/flutter_debouncer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/routes/route_path.dart';
-import 'package:packit/app/extension/input_validate.dart';
 import 'package:packit/presentation/widget/packit_appbar.dart';
 import 'package:packit/presentation/widget/packit_button.dart';
 
@@ -34,7 +34,7 @@ class SetProfilePage extends StatelessWidget {
                 ),
                 SizedBox(height: 89.77.w),
                 const _ProfileImageWidget(),
-                SizedBox(height: 32.77.w),
+                SizedBox(height: 39.27.w),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5.w),
                   child: const _NickNameTextField(),
@@ -52,8 +52,8 @@ class SetProfilePage extends StatelessWidget {
                   ? EdgeInsets.only(top: 16.35.w, bottom: MediaQuery.of(context).viewInsets.bottom + 28.w)
                   : EdgeInsets.only(top: 16.35.w, bottom: MediaQuery.of(context).viewInsets.bottom + 28.w),
               child: PackitButton(
-                "프로필 만들기",
-                onTap: controller.isNickValid.value ? () => Get.toNamed(RoutePath.selectRegion) : null,
+                "확인",
+                onTap: controller.isNickValid.value ? () async => await controller.register() : null,
               ),
             );
           },
@@ -160,19 +160,18 @@ class _NickNameTextField extends GetView<OnboardingController> {
                         : const SizedBox(),
                     suffixIconConstraints: BoxConstraints(maxWidth: 35.3.w, maxHeight: 24.w),
                   ),
-                  onChanged: (value) {
-                    if (value.length >= 2) {
-                      controller.isValidatorEnable.value = true;
-                      controller.isNickValid.value = controller.nickNameTextController.text.isValidNick();
-                    } else {
-                      controller.isValidatorEnable.value = false;
-                      controller.isNickValid.value = false;
-                    }
+                  onChanged: (value) async {
+                    final Debouncer debouncer = Debouncer();
+
+                    debouncer.debounce(
+                      duration: const Duration(milliseconds: 150),
+                      onDebounce: () async => await controller.validateNickname(),
+                    );
                   },
                 ),
               ),
             ),
-            SizedBox(height: 11.w),
+            SizedBox(height: 10.w),
             Text(
               "2~13자의 한글, 영문, 숫자, -, _ 조합 사용 가능",
               style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w600, color: AppColor.coolGray100),
