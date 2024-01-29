@@ -4,8 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/app_typeface.dart';
 
-class PackitAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const PackitAppBar({super.key, this.title});
+class PackitBackAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const PackitBackAppBar({super.key, this.title});
 
   final String? title;
 
