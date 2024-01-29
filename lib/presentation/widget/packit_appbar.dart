@@ -33,3 +33,31 @@ class PackitBackAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(43);
 }
+
+class PackitAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const PackitAppBar({super.key, this.title, this.leading = const [], this.actions = const []});
+
+  final String? title;
+  final List<Widget> leading;
+  final List<Widget> actions;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      leadingWidth: 40.25.w,
+      leading: GestureDetector(
+        onTap: () => Navigator.pop(context),
+        child: Row(children: leading),
+      ),
+      title: Text(title ?? ""),
+      titleTextStyle: AppTypeFace.to.subHeading2Semibold.copyWith(color: AppColor.coolGray400),
+      actions: actions,
+      elevation: 0,
+      scrolledUnderElevation: 0,
+    );
+  }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(43);
+}
