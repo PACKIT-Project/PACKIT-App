@@ -50,7 +50,7 @@ class OnboardingPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 158.69.h),
-            PackitButton("시작하기", onTap: () => Get.toNamed(RoutePath.login)),
+            PackitButton("시작하기", onTap: () => Get.toNamed(RoutePath.main)),
             SizedBox(height: 28.07.h),
           ],
         ),

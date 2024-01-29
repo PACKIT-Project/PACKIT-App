@@ -17,6 +17,14 @@ class PackitBottomNavBar extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         Positioned.fill(
+          top: -120.w,
+          right: 16.w,
+          child: const Align(
+            alignment: Alignment.topRight,
+            child: _AddTourToolTip(),
+          ),
+        ),
+        Positioned.fill(
           top: -30,
           right: 26,
           child: Align(
@@ -133,6 +141,44 @@ class _BottomNavBarItem extends GetView<MainController> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _AddTourToolTip extends StatelessWidget {
+  const _AddTourToolTip({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Image.asset(
+          'assets/images/tooltip_bubble.png',
+          width: 254.w,
+          height: 84.92094.h,
+          fit: BoxFit.fill,
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 14.w),
+          child: SizedBox(
+            height: 76.81094.h,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("✈️ 새로운 여행을 추가해보세요", style: AppTypeFace.to.body4SemiBold),
+                SizedBox(height: 5.h),
+                Text(
+                  "계획한 여행을 추가하고 혼자 혹은 최대 8명까지\n함께 여행을 준비할 수 있습니다.",
+                  style: AppTypeFace.to.caption2Medium.copyWith(color: AppColor.coolGray200),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
