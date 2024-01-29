@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:packit/data/models/packit_response_model.dart';
 import 'package:retrofit/http.dart';
 
 import '../../models/image_response_model.dart';
+import '../../models/packit_response_model.dart';
 
 part 'image_api.g.dart';
 

@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:packit/data/models/packit_response_model.dart';
-import 'package:packit/domain/entities/packit_login_entity.dart';
 import 'package:retrofit/http.dart';
 
+import 'package:packit/domain/entities/packit_login_entity.dart';
+
 import '../../models/login_response_model.dart';
+import '../../models/packit_response_model.dart';
 
 part 'auth_api.g.dart';
 
