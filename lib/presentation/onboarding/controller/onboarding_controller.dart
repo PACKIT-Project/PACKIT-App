@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/app/extension/input_validate.dart';
 import 'package:packit/app/service/auth_service.dart';
 import 'package:packit/app/util/image_util.dart';

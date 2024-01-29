@@ -6,7 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:packit/app/config/app_color.dart';
-import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/presentation/widget/packit_appbar.dart';
 import 'package:packit/presentation/widget/packit_button.dart';
 
