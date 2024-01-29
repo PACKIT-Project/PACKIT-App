@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:packit/app/config/app_color.dart';
+import 'package:packit/app/config/app_typeface.dart';
 
 class PackitButton extends StatelessWidget {
   const PackitButton(this.text, {super.key, required this.onTap});
@@ -20,7 +21,7 @@ class PackitButton extends StatelessWidget {
           decoration:
               BoxDecoration(color: onTap != null ? AppColor.mainBlue : AppColor.mainBlueInActive, borderRadius: BorderRadius.circular(8)),
           child: Center(
-            child: Text(text, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700, color: Colors.white)),
+            child: Text(text, style: AppTypeFace.to.label1Bold.copyWith(color: Colors.white)),
           ),
         ),
       ),

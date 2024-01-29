@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:packit/app/config/app_color.dart';
+import 'package:packit/app/config/app_typeface.dart';
 import 'package:packit/presentation/authentication/controller/login_controller.dart';
 
 import '../widget/sso_login_button.dart';
@@ -20,7 +21,7 @@ class LoginPage extends StatelessWidget {
             SizedBox(height: 17.16.h),
             Text(
               "빈틈없는 여행 준비의 시작",
-              style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500, color: AppColor.coolGray300),
+              style: AppTypeFace.to.subHeading4Medium.copyWith(color: AppColor.coolGray300),
             ),
             SizedBox(height: 117.31.h),
             SSOLoginButton(

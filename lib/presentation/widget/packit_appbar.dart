@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:packit/app/config/app_color.dart';
+import 'package:packit/app/config/app_typeface.dart';
 
 class PackitAppBar extends StatelessWidget implements PreferredSizeWidget {
   const PackitAppBar({super.key, this.title});
@@ -23,7 +24,7 @@ class PackitAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       title: Text(title ?? ""),
-      titleTextStyle: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w700, color: AppColor.coolGray400),
+      titleTextStyle: AppTypeFace.to.subHeading2Semibold.copyWith(color: AppColor.coolGray400),
       elevation: 0,
       scrolledUnderElevation: 0,
     );

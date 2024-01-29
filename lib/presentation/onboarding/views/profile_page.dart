@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:packit/app/config/app_color.dart';
+import 'package:packit/app/config/app_typeface.dart';
 import 'package:packit/presentation/widget/packit_appbar.dart';
 import 'package:packit/presentation/widget/packit_button.dart';
 
@@ -29,7 +30,7 @@ class SetProfilePage extends StatelessWidget {
                 SizedBox(height: 11.64.w),
                 Text(
                   "사용하실 닉네임을\n입력해주세요",
-                  style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.w700),
+                  style: AppTypeFace.to.display1bold,
                 ),
                 SizedBox(height: 89.77.w),
                 const _ProfileImageWidget(),
@@ -173,13 +174,13 @@ class _NickNameTextField extends GetView<OnboardingController> {
             SizedBox(height: 10.w),
             Text(
               "2~13자의 한글, 영문, 숫자, -, _ 조합 사용 가능",
-              style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w600, color: AppColor.coolGray100),
+              style: AppTypeFace.to.caption1Semibold.copyWith(color: AppColor.coolGray100),
             ),
             SizedBox(height: 8.w),
             if (controller.isValidatorEnable.value && controller.isNickValid.value) ...[
-              Text("사용할 수 있는 닉네임입니다.", style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w600, color: AppColor.mainBlue)),
+              Text("사용할 수 있는 닉네임입니다.", style: AppTypeFace.to.caption1Semibold.copyWith(color: AppColor.mainBlue)),
             ] else if (controller.isValidatorEnable.value && !controller.isNickValid.value) ...[
-              Text("닉네임을 확인해주세요.", style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w600, color: AppColor.alert)),
+              Text("닉네임을 확인해주세요.", style: AppTypeFace.to.caption1Semibold.copyWith(color: AppColor.alert)),
             ]
           ],
         );
