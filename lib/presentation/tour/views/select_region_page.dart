@@ -14,7 +14,7 @@ class SelectRegionPage extends GetView<TourController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PackitAppBar(),
+      appBar: const PackitBackAppBar(),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

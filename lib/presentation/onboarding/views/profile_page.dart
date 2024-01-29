@@ -18,7 +18,7 @@ class SetProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PackitAppBar(),
+      appBar: const PackitBackAppBar(),
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
