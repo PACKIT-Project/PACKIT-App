@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:packit/app/config/app_color.dart';
+import 'package:packit/app/config/app_typeface.dart';
 import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/presentation/onboarding/controller/onboarding_controller.dart';
 import 'package:packit/presentation/widget/packit_appbar.dart';
@@ -25,7 +26,7 @@ class TermPage extends GetView<OnboardingController> {
               padding: EdgeInsets.only(left: 25.w),
               child: Text(
                 "서비스 이용을 위해\n이용약관 동의가 필요합니다.",
-                style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.w700, color: AppColor.coolGray400),
+                style: AppTypeFace.to.display1bold,
               ),
             ),
             SizedBox(height: 64.3.w),
@@ -39,7 +40,7 @@ class TermPage extends GetView<OnboardingController> {
                     SizedBox(width: 11.w),
                     Text(
                       "전체 동의",
-                      style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600, color: AppColor.coolGray500),
+                      style: AppTypeFace.to.display2Semibold,
                     ),
                   ],
                 ),
@@ -64,7 +65,7 @@ class TermPage extends GetView<OnboardingController> {
                               value: controller.isPrivacyChecked.value, onChanged: (value) => controller.isPrivacyChecked.value = value!),
                         ),
                         SizedBox(width: 9.w),
-                        Text("(필수) 개인정보처리방침", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: AppColor.coolGray500)),
+                        Text("(필수) 개인정보처리방침", style: AppTypeFace.to.subHeading1Semibold),
                         const Spacer(),
                         SvgPicture.asset('assets/icons/navigate_next.svg', width: 24.w, height: 24.w),
                       ],
@@ -80,7 +81,7 @@ class TermPage extends GetView<OnboardingController> {
                               value: controller.isTermChecked.value, onChanged: (value) => controller.isTermChecked.value = value!),
                         ),
                         SizedBox(width: 9.w),
-                        Text("(필수) 서비스 이용약관", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: AppColor.coolGray500)),
+                        Text("(필수) 서비스 이용약관", style: AppTypeFace.to.subHeading1Semibold),
                         const Spacer(),
                         SvgPicture.asset('assets/icons/navigate_next.svg', width: 24.w, height: 24.w),
                       ],
@@ -96,7 +97,7 @@ class TermPage extends GetView<OnboardingController> {
                               value: controller.isPushChecked.value, onChanged: (value) => controller.isPushChecked.value = value!),
                         ),
                         SizedBox(width: 9.w),
-                        Text("(선택) 푸시 알림 동의", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: AppColor.coolGray500)),
+                        Text("(선택) 푸시 알림 동의", style: AppTypeFace.to.subHeading1Semibold),
                         const Spacer(),
                         SvgPicture.asset('assets/icons/navigate_next.svg', width: 24.w, height: 24.w),
                       ],
