@@ -49,6 +49,7 @@ flutter:
   assets:
     - .env
     - assets/icons/
+    - assets/icons/home/
     - assets/icons/onboarding/
     - assets/icons/tour/
     - assets/images/
