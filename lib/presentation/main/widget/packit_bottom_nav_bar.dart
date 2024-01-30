@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/app_typeface.dart';
+import 'package:packit/app/config/routes/route_path.dart';
 
 import '../controller/main_controller.dart';
 
@@ -84,18 +85,21 @@ class PackitBottomNavBar extends StatelessWidget {
               height: 80,
               decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
               child: Center(
-                child: Container(
-                  width: 66,
-                  height: 66,
-                  decoration: const BoxDecoration(color: AppColor.mainBlue, shape: BoxShape.circle, boxShadow: [
-                    BoxShadow(
-                      color: Color(0x14000000),
-                      blurRadius: 7.42,
-                      offset: Offset(0, 1.85),
-                      spreadRadius: 0,
-                    )
-                  ]),
-                  child: Center(child: SvgPicture.asset('assets/icons/home/add.svg', width: 36, height: 36, fit: BoxFit.cover)),
+                child: GestureDetector(
+                  onTap: () => Get.toNamed(RoutePath.selectRegion),
+                  child: Container(
+                    width: 66,
+                    height: 66,
+                    decoration: const BoxDecoration(color: AppColor.mainBlue, shape: BoxShape.circle, boxShadow: [
+                      BoxShadow(
+                        color: Color(0x14000000),
+                        blurRadius: 7.42,
+                        offset: Offset(0, 1.85),
+                        spreadRadius: 0,
+                      )
+                    ]),
+                    child: Center(child: SvgPicture.asset('assets/icons/home/add.svg', width: 36, height: 36, fit: BoxFit.cover)),
+                  ),
                 ),
               ),
             ),
