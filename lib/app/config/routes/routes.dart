@@ -4,6 +4,8 @@ import 'package:packit/presentation/authentication/controller/login_binding.dart
 import 'package:packit/presentation/authentication/views/login_page.dart';
 import 'package:packit/presentation/main/controller/main_binding.dart';
 import 'package:packit/presentation/main/views/main_page.dart';
+import 'package:packit/presentation/notification/controller/notification_binding.dart';
+import 'package:packit/presentation/notification/views/notification_page.dart';
 import 'package:packit/presentation/onboarding/controller/onboarding_binding.dart';
 import 'package:packit/presentation/onboarding/views/onboarding_page.dart';
 import 'package:packit/presentation/onboarding/views/profile_page.dart';
@@ -28,6 +30,13 @@ class Routes {
       name: RoutePath.main,
       page: () => const MainPage(),
       binding: MainBinding(),
+    ),
+
+    // Notification
+    GetPage(
+      name: RoutePath.notification,
+      page: () => const NotificationPage(),
+      binding: NotificationBinding(),
     ),
 
     // Onboarding

@@ -5,6 +5,9 @@ class RoutePath {
   // Home
   static const String main = "/main";
 
+  // Notification
+  static const String notification = "/notification";
+
   // Onboarding
   static const String onboarding = "/onboarding";
   static const String term = "/term";

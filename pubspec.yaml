@@ -50,6 +50,7 @@ flutter:
     - .env
     - assets/icons/
     - assets/icons/home/
+    - assets/icons/notification/
     - assets/icons/onboarding/
     - assets/icons/tour/
     - assets/images/

@@ -146,9 +146,7 @@ class _BottomNavBarItem extends GetView<MainController> {
 }
 
 class _AddTourToolTip extends StatelessWidget {
-  const _AddTourToolTip({
-    super.key,
-  });
+  const _AddTourToolTip();
 
   @override
   Widget build(BuildContext context) {
