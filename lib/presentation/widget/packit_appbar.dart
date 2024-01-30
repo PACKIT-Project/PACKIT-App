@@ -5,9 +5,10 @@ import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/app_typeface.dart';
 
 class PackitBackAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const PackitBackAppBar({super.key, this.title});
+  const PackitBackAppBar({super.key, this.title, this.actions = const []});
 
   final String? title;
+  final List<Widget> actions;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +26,7 @@ class PackitBackAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       title: Text(title ?? ""),
       titleTextStyle: AppTypeFace.to.subHeading2Semibold.copyWith(color: AppColor.coolGray400),
+      actions: actions,
       elevation: 0,
       scrolledUnderElevation: 0,
     );

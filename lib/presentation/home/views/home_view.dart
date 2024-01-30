@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/app_typeface.dart';
+import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/presentation/widget/packit_appbar.dart';
 
 class HomeView extends StatelessWidget {
@@ -15,7 +17,9 @@ class HomeView extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 16.w),
-            child: SvgPicture.asset('assets/icons/home/notification.svg', width: 24.w, height: 24.w),
+            child: GestureDetector(
+                onTap: () => Get.toNamed(RoutePath.notification),
+                child: SvgPicture.asset('assets/icons/home/notification.svg', width: 24.w, height: 24.w)),
           ),
         ],
       ),
