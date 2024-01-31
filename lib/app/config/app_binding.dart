@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:packit/app/network/builder/dio_builder.dart';
 import 'package:packit/app/service/auth_service.dart';
+import 'package:packit/app/service/fcm_service.dart';
 import 'package:packit/data/datasources/remote/auth_api.dart';
 import 'package:packit/data/datasources/remote/image_api.dart';
 import 'package:packit/data/datasources/remote/member_api.dart';
@@ -56,6 +57,7 @@ class AppBinding extends Bindings {
 
   void injectService() {
     Get.put(AuthService());
+    Get.put(FCMService());
   }
 
   void injectUseCase() {
