@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -9,6 +11,12 @@ import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 import 'package:packit/app/config/app_binding.dart';
 import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/app/config/routes/routes.dart';
+
+import 'firebase_options.dart';
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  debugPrint('Handling a background message ${message.messageId}');
+}
 
 void main() async {
   // Ensure that the WidgetsBinding has been initialized
@@ -23,6 +31,12 @@ void main() async {
 
   // Initialize Kakao SDK
   KakaoSdk.init(nativeAppKey: dotenv.env['KAKAO_NATIVE_APP_KEY']!);
+
+  // Initialize Firebase
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  // Initialize FCM
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   runApp(const MainApp());
 }
