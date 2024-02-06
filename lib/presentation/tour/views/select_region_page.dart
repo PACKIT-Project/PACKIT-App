@@ -205,6 +205,7 @@ class _SearchResultWidget extends GetView<TourController> {
             behavior: HitTestBehavior.translucent,
             onTap: () {
               controller.selectedRegion.value = controller.searchResultList[index].city;
+              controller.selectedRegionId = controller.searchResultList[index].id;
               Get.toNamed(RoutePath.selectTitle);
             },
             child: Padding(
