@@ -9,12 +9,15 @@ environment:
 dependencies:
   auto_mappr_annotation: ^2.1.0
   dio: ^5.4.0
+  firebase_core: ^2.24.2
+  firebase_messaging: ^14.7.10
   flutter:
     sdk: flutter
   flutter_carousel_slider: ^1.1.0
   flutter_debouncer: ^2.0.0
   flutter_dotenv: ^5.1.0
   flutter_image_compress: ^2.1.0
+  flutter_local_notifications: ^16.3.2
   flutter_localizations:
     sdk: flutter
   flutter_naver_login: ^1.8.0
