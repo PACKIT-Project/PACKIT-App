@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:packit/app/config/app_color.dart';
+import 'package:packit/app/extension/travel_date.dart';
 import 'package:packit/presentation/widget/packit_appbar.dart';
 import 'package:packit/presentation/widget/packit_button.dart';
 
@@ -64,7 +65,7 @@ class CheckTourInformationPage extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          "${_calendarController.rangeEnd.value!.difference(_calendarController.rangeStart.value!).inDays}박 ${_calendarController.rangeEnd.value!.difference(_calendarController.rangeStart.value!).inDays + 1}일",
+                          _calendarController.rangeEnd.value!.toNDayString(_calendarController.rangeStart.value!),
                           style: TextStyle(
                             fontSize: 30.sp,
                             fontWeight: FontWeight.w700,
