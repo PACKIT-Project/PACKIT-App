@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/app_typeface.dart';
 import 'package:packit/app/config/routes/route_path.dart';
-import 'package:packit/presentation/tour/controller/tour_controller.dart';
+import 'package:packit/presentation/new_tour/controller/new_tour_controller.dart';
 import 'package:packit/presentation/widget/packit_appbar.dart';
 import 'package:packit/presentation/widget/packit_button.dart';
 
-class SelectTitlePage extends GetView<TourController> {
+class SelectTitlePage extends GetView<NewTourController> {
   const SelectTitlePage({super.key});
 
   @override

@@ -8,9 +8,9 @@ import 'package:packit/app/config/app_typeface.dart';
 import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/presentation/widget/packit_appbar.dart';
 
-import '../controller/tour_controller.dart';
+import '../controller/new_tour_controller.dart';
 
-class SelectRegionPage extends GetView<TourController> {
+class SelectRegionPage extends GetView<NewTourController> {
   const SelectRegionPage({super.key});
 
   @override
@@ -53,7 +53,7 @@ class SelectRegionPage extends GetView<TourController> {
   }
 }
 
-class _RegionTextField extends GetView<TourController> {
+class _RegionTextField extends GetView<NewTourController> {
   const _RegionTextField();
 
   @override
@@ -109,7 +109,7 @@ class _RegionTextField extends GetView<TourController> {
   }
 }
 
-class _LatestSearchWidget extends GetView<TourController> {
+class _LatestSearchWidget extends GetView<NewTourController> {
   const _LatestSearchWidget();
 
   @override
@@ -161,7 +161,7 @@ class _LatestSearchWidget extends GetView<TourController> {
   }
 }
 
-class _SearchResultListView extends GetView<TourController> {
+class _SearchResultListView extends GetView<NewTourController> {
   const _SearchResultListView();
 
   @override
@@ -191,7 +191,7 @@ class _SearchResultListView extends GetView<TourController> {
   }
 }
 
-class _SearchResultWidget extends GetView<TourController> {
+class _SearchResultWidget extends GetView<NewTourController> {
   const _SearchResultWidget();
 
   @override

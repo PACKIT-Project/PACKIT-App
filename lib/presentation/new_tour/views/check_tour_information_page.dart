@@ -7,12 +7,12 @@ import 'package:packit/presentation/widget/packit_appbar.dart';
 import 'package:packit/presentation/widget/packit_button.dart';
 
 import '../controller/calendar_controller.dart';
-import '../controller/tour_controller.dart';
+import '../controller/new_tour_controller.dart';
 
 class CheckTourInformationPage extends StatelessWidget {
   CheckTourInformationPage({super.key});
 
-  final _tourController = Get.find<TourController>();
+  final _tourController = Get.find<NewTourController>();
   final _calendarController = Get.find<CalendarController>();
 
   @override

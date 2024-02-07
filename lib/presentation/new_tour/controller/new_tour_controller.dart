@@ -7,9 +7,9 @@ import 'package:packit/domain/entities/packit_new_travel_entity.dart';
 import 'package:packit/domain/entities/packit_response.dart';
 import 'package:packit/domain/usecases/destination_use_cases.dart';
 import 'package:packit/domain/usecases/travel_use_cases.dart';
-import 'package:packit/presentation/tour/controller/calendar_controller.dart';
+import 'package:packit/presentation/new_tour/controller/calendar_controller.dart';
 
-class TourController extends GetxController {
+class NewTourController extends GetxController {
   final DestinationUseCases destinationUseCases = Get.find<DestinationUseCases>();
   final TravelUseCases newTravelUseCases = Get.find<TravelUseCases>();
 
