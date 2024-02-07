@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:packit/app/config/app_color.dart';
+import 'package:packit/app/config/app_typeface.dart';
 import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/presentation/tour/controller/tour_controller.dart';
 import 'package:packit/presentation/widget/packit_appbar.dart';
@@ -12,6 +13,8 @@ class SelectTitlePage extends GetView<TourController> {
 
   @override
   Widget build(BuildContext context) {
+    final textPainter = _getTextPainter(TextSpan(text: controller.selectedRegion.value, style: AppTypeFace.to.body3SemiBold));
+
     return Scaffold(
       appBar: const PackitBackAppBar(),
       body: SafeArea(
@@ -28,18 +31,16 @@ class SelectTitlePage extends GetView<TourController> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("여행의 제목을\n입력해주세요",
-                              style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.w700, color: AppColor.coolGray300)),
+                          Text("여행의 제목을\n입력해주세요", style: AppTypeFace.to.display1bold.copyWith(color: AppColor.coolGray300)),
                           SizedBox(height: 6.05.w),
-                          Text("제목은 14자까지 입력 가능합니다",
-                              style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w600, color: AppColor.coolGray100)),
+                          Text("제목은 14자까지 입력 가능합니다", style: AppTypeFace.to.caption1Semibold.copyWith(color: AppColor.coolGray100)),
                         ],
                       ),
                       const Spacer(),
                       Row(
                         children: [
-                          Text("2", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: AppColor.mainBlue)),
-                          Text("/3", style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: const Color(0xFF6B7684))),
+                          Text("2", style: AppTypeFace.to.body3SemiBold.copyWith(color: AppColor.mainBlue)),
+                          Text("/3", style: AppTypeFace.to.body3SemiBold.copyWith(color: const Color(0xFF6B7684))),
                         ],
                       ),
                     ],
@@ -55,7 +56,7 @@ class SelectTitlePage extends GetView<TourController> {
                         contentPadding: EdgeInsets.symmetric(horizontal: 8.5.w, vertical: 14.w),
                         counterText: "",
                         hintText: "여행의 제목을 입력해주세요",
-                        hintStyle: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500, color: AppColor.gray3),
+                        hintStyle: AppTypeFace.to.body1Medium.copyWith(color: AppColor.gray3),
                         enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(6.r),
                           borderSide: const BorderSide(width: 1.5, color: AppColor.coolGray200),
@@ -67,20 +68,21 @@ class SelectTitlePage extends GetView<TourController> {
                         prefixIcon: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 8.w),
                           child: Container(
-                            width: 48.w,
-                            height: 34.w,
                             decoration: BoxDecoration(borderRadius: BorderRadius.circular(6.r), color: AppColor.mainBlue1),
                             child: Center(
                                 child: Text(controller.selectedRegion.value,
-                                    style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: AppColor.mainBlue))),
+                                    style: AppTypeFace.to.body3SemiBold.copyWith(color: AppColor.mainBlue))),
                           ),
                         ),
-                        prefixIconConstraints: BoxConstraints(maxWidth: 64.w, maxHeight: 34.w),
+                        prefixIconConstraints: BoxConstraints(maxWidth: textPainter.width + 30.w, maxHeight: 34.w),
                         suffixIcon: ValueListenableBuilder<TextEditingValue>(
                           valueListenable: controller.tourTitleTextController,
                           builder: (context, value, child) {
                             if (value.text.isNotEmpty) {
-                              return Icon(Icons.cancel, color: AppColor.gray3, size: 18.w);
+                              return GestureDetector(
+                                onTap: () => controller.tourTitleTextController.clear(),
+                                child: Icon(Icons.cancel, color: AppColor.gray3, size: 18.w),
+                              );
                             } else {
                               return const SizedBox();
                             }
@@ -105,4 +107,14 @@ class SelectTitlePage extends GetView<TourController> {
       ),
     );
   }
+}
+
+TextPainter _getTextPainter(TextSpan textSpan) {
+  final textPainter = TextPainter(
+    text: textSpan,
+    textDirection: TextDirection.ltr,
+  );
+  textPainter.layout();
+
+  return textPainter;
 }
