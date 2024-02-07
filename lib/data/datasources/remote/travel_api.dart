@@ -11,5 +11,5 @@ abstract class TravelAPI {
   factory TravelAPI(Dio dioBuilder) = _TravelAPI;
 
   @POST('/travels/new')
-  Future<PackitResponseModel<int>> searchDestination(@Body() PackitNewTravelEntity newTravelEntity);
+  Future<PackitResponseModel<int>> newTravel(@Body() PackitNewTravelEntity newTravelEntity);
 }

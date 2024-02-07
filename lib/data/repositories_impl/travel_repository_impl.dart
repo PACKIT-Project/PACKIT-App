@@ -15,7 +15,7 @@ class TravelRepositoryImpl extends TravelRepository {
 
   @override
   Future<PackitResponse<int>> newTravel(PackitNewTravelEntity newTravelEntity) async {
-    PackitResponseModel<int> response = await _api.searchDestination(newTravelEntity);
+    PackitResponseModel<int> response = await _api.newTravel(newTravelEntity);
 
     return _mappr.convert<PackitResponseModel<int>, PackitResponse<int>>(response);
   }
