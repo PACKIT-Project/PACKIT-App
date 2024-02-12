@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:packit/domain/entities/invitation_response.dart';
 
 import 'package:packit/domain/entities/packit_empty_response.dart';
 import 'package:packit/domain/entities/packit_new_travel_entity.dart';
@@ -7,6 +8,7 @@ import 'package:packit/domain/entities/travel_response.dart';
 import 'package:packit/domain/repositories/travel_repository.dart';
 
 import '../datasources/remote/travel_api.dart';
+import '../models/invitation_response_model.dart';
 import '../models/packit_empty_response_model.dart';
 import '../models/packit_response_model.dart';
 import '../models/travel_response_model.dart';
@@ -22,6 +24,13 @@ class TravelRepositoryImpl extends TravelRepository {
     PackitEmptyResponseModel response = await _api.deleteTravel(travelId);
 
     return _mappr.convert<PackitEmptyResponseModel, PackitEmptyResponse>(response);
+  }
+
+  @override
+  Future<PackitResponse<InvitationResponse>> getInvitationInfo(int travelId) async {
+    PackitResponseModel<InvitationResponseModel> response = await _api.getInvitationInfo(travelId);
+
+    return _mappr.convert<PackitResponseModel<InvitationResponseModel>, PackitResponse<InvitationResponse>>(response);
   }
 
   @override

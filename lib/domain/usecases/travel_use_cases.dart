@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../entities/invitation_response.dart';
 import '../entities/packit_empty_response.dart';
 import '../entities/packit_new_travel_entity.dart';
 import '../entities/packit_response.dart';
@@ -10,6 +11,7 @@ class TravelUseCases {
   final TravelRepository _repository = Get.find<TravelRepository>();
 
   DeleteTravelUseCase get deleteTravelUseCase => DeleteTravelUseCase(_repository);
+  GetInvitationInfoUseCase get getInvitationInfoUseCase => GetInvitationInfoUseCase(_repository);
   GetPastTravelsUseCase get getPastTravelsUseCase => GetPastTravelsUseCase(_repository);
   GetUpcomingTravelsUseCase get getUpcomingTravelsUseCase => GetUpcomingTravelsUseCase(_repository);
   NewTravelUseCase get newTravelUseCase => NewTravelUseCase(_repository);
@@ -21,6 +23,15 @@ class DeleteTravelUseCase {
 
   Future<PackitEmptyResponse> execute(int travelId) async {
     return await _repository.deleteTravel(travelId);
+  }
+}
+
+class GetInvitationInfoUseCase {
+  final TravelRepository _repository;
+  GetInvitationInfoUseCase(this._repository);
+
+  Future<PackitResponse<InvitationResponse>> execute(int travelId) async {
+    return await _repository.getInvitationInfo(travelId);
   }
 }
 
