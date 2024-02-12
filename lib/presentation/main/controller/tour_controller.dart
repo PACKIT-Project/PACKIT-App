@@ -9,6 +9,21 @@ class TourController extends GetxController {
   RxList<TravelResponse> pastTravelList = <TravelResponse>[].obs;
   RxList<TravelResponse> upcomingTravelList = <TravelResponse>[].obs;
 
+  Future<void> deleteTravel(int travelId) async {
+    try {
+      await travelUseCases.deleteTravelUseCase.execute(travelId);
+
+      pastTravelList.removeWhere((element) => element.id == travelId);
+      upcomingTravelList.removeWhere((element) => element.id == travelId);
+
+      pastTravelList.refresh();
+      upcomingTravelList.refresh();
+    } catch (e) {
+      if (kDebugMode) print(e);
+      rethrow;
+    }
+  }
+
   Future<void> getPastTravels() async {
     try {
       List<TravelResponse> response = (await travelUseCases.getPastTravelsUseCase.execute()).data;
