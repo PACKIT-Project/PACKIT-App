@@ -18,4 +18,7 @@ class RoutePath {
   static const String selectTitle = "/select_title";
   static const String selectRegion = "/select_region";
   static const String checkTourInformation = "/tour_check";
+
+  // Profile
+  static const String inviteTravel = "/invite_travel";
 }

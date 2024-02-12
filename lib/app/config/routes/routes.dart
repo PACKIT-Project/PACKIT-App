@@ -15,6 +15,7 @@ import 'package:packit/presentation/new_tour/views/check_tour_information_page.d
 import 'package:packit/presentation/new_tour/views/select_date_page.dart';
 import 'package:packit/presentation/new_tour/views/select_region_page.dart';
 import 'package:packit/presentation/new_tour/views/select_title_page.dart';
+import 'package:packit/presentation/profile/views/invite_travel_page.dart';
 
 class Routes {
   static List<GetPage> routes = [
@@ -48,6 +49,7 @@ class Routes {
     GetPage(
       name: RoutePath.term,
       page: () => const TermPage(),
+      binding: OnboardingBinding(),
     ),
     GetPage(
       name: RoutePath.setProfile,
@@ -71,6 +73,12 @@ class Routes {
     GetPage(
       name: RoutePath.checkTourInformation,
       page: () => CheckTourInformationPage(),
+    ),
+
+    // Profile
+    GetPage(
+      name: RoutePath.inviteTravel,
+      page: () => InviteTravelPage(),
     ),
   ];
 }

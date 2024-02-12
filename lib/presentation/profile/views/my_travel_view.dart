@@ -105,7 +105,7 @@ class _TravelDetailView extends StatelessWidget {
                       ]),
                     ),
                     const Spacer(),
-                    GestureDetector(onTap: () {}, child: PackitTravelMenuAnchor(travelId: travelList[i].id)),
+                    PackitTravelMenuAnchor(travel: travelList[i]),
                   ],
                 ),
                 SizedBox(height: 4.h),
