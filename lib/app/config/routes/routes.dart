@@ -16,6 +16,7 @@ import 'package:packit/presentation/new_tour/views/select_date_page.dart';
 import 'package:packit/presentation/new_tour/views/select_region_page.dart';
 import 'package:packit/presentation/new_tour/views/select_title_page.dart';
 import 'package:packit/presentation/profile/views/invite_travel_page.dart';
+import 'package:packit/presentation/profile/views/notification_setting_page.dart';
 import 'package:packit/presentation/profile/views/setting_page.dart';
 
 class Routes {
@@ -80,6 +81,10 @@ class Routes {
     GetPage(
       name: RoutePath.inviteTravel,
       page: () => InviteTravelPage(),
+    ),
+    GetPage(
+      name: RoutePath.notificationSetting,
+      page: () => const NotificationSettingPage(),
     ),
     GetPage(
       name: RoutePath.setting,

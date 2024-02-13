@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/app_typeface.dart';
+import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/presentation/widget/packit_appbar.dart';
 import 'package:packit/presentation/widget/packit_bottom_sheet.dart';
 import 'package:packit/presentation/widget/packit_dialog.dart';
@@ -20,9 +22,13 @@ class SettingPage extends StatelessWidget {
           children: [
             SizedBox(height: 15.08.h),
             const _SettingHeaderWidget("설정"),
-            _SettingItemWidget(
-              title: "알림 설정",
-              child: SvgPicture.asset('assets/icons/profile/navigate_next.svg', width: 24.w, height: 24.w),
+            GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: () => Get.toNamed(RoutePath.notificationSetting),
+              child: _SettingItemWidget(
+                title: "알림 설정",
+                child: SvgPicture.asset('assets/icons/profile/navigate_next.svg', width: 24.w, height: 24.w),
+              ),
             ),
             const _SettingDividerWidget(),
             const _SettingHeaderWidget("정보"),
