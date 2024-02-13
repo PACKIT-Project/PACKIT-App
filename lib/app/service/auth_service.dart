@@ -28,10 +28,7 @@ class AuthService extends GetxService {
     super.onInit();
 
     await getCredential();
-
-    if (_credential != null) {
-      await login();
-    }
+    if (_credential != null) await login();
   }
 
   Future<void> getCredential() async {
@@ -46,15 +43,22 @@ class AuthService extends GetxService {
   Future<void> login() async {
     try {
       LoginResponse response = (await _authUseCases.login.execute(_credential!)).data;
+      token = TokenResponse(accessToken: response.accessToken, refreshToken: response.refreshToken);
 
-      if (response.memberStatus == MemberStatusEnum.active) {
-        token = TokenResponse(accessToken: response.accessToken, refreshToken: response.refreshToken);
+      switch (response.memberStatus) {
+        case MemberStatusEnum.active:
+          member = (await _memberUseCases.getMemberProfile.execute()).data;
 
-        member = (await _memberUseCases.getMemberProfile.execute()).data;
-
-        if (member != null && token != null) {
-          Get.offAllNamed(RoutePath.main);
-        }
+          if (member != null && token != null) {
+            Get.offAllNamed(RoutePath.main);
+          }
+          break;
+        case MemberStatusEnum.waitingToJoin:
+          Get.toNamed(RoutePath.term);
+          break;
+        case MemberStatusEnum.delete:
+          await logout();
+          break;
       }
     } catch (e) {
       if (kDebugMode) print(e);
