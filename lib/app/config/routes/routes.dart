@@ -10,11 +10,14 @@ import 'package:packit/presentation/onboarding/controller/onboarding_binding.dar
 import 'package:packit/presentation/onboarding/views/onboarding_page.dart';
 import 'package:packit/presentation/onboarding/views/profile_page.dart';
 import 'package:packit/presentation/onboarding/views/term_page.dart';
-import 'package:packit/presentation/tour/controller/tour_binding.dart';
-import 'package:packit/presentation/tour/views/check_tour_information_page.dart';
-import 'package:packit/presentation/tour/views/select_date_page.dart';
-import 'package:packit/presentation/tour/views/select_region_page.dart';
-import 'package:packit/presentation/tour/views/select_title_page.dart';
+import 'package:packit/presentation/new_tour/controller/new_tour_binding.dart';
+import 'package:packit/presentation/new_tour/views/check_tour_information_page.dart';
+import 'package:packit/presentation/new_tour/views/select_date_page.dart';
+import 'package:packit/presentation/new_tour/views/select_region_page.dart';
+import 'package:packit/presentation/new_tour/views/select_title_page.dart';
+import 'package:packit/presentation/profile/views/invite_travel_page.dart';
+import 'package:packit/presentation/profile/views/notification_setting_page.dart';
+import 'package:packit/presentation/profile/views/setting_page.dart';
 
 class Routes {
   static List<GetPage> routes = [
@@ -48,17 +51,18 @@ class Routes {
     GetPage(
       name: RoutePath.term,
       page: () => const TermPage(),
+      binding: OnboardingBinding(),
     ),
     GetPage(
       name: RoutePath.setProfile,
       page: () => const SetProfilePage(),
     ),
 
-    // Add Tour
+    // Add New Tour
     GetPage(
       name: RoutePath.selectRegion,
       page: () => const SelectRegionPage(),
-      binding: TourBinding(),
+      binding: NewTourBinding(),
     ),
     GetPage(
       name: RoutePath.selectTitle,
@@ -68,10 +72,23 @@ class Routes {
       name: RoutePath.selectDate,
       page: () => const SelectDatePage(),
     ),
-
     GetPage(
       name: RoutePath.checkTourInformation,
       page: () => CheckTourInformationPage(),
+    ),
+
+    // Profile
+    GetPage(
+      name: RoutePath.inviteTravel,
+      page: () => InviteTravelPage(),
+    ),
+    GetPage(
+      name: RoutePath.notificationSetting,
+      page: () => const NotificationSettingPage(),
+    ),
+    GetPage(
+      name: RoutePath.setting,
+      page: () => const SettingPage(),
     ),
   ];
 }

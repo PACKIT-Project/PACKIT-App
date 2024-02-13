@@ -11,6 +11,7 @@ dependencies:
   dio: ^5.4.0
   firebase_core: ^2.24.2
   firebase_messaging: ^14.7.10
+  flash: ^3.1.0
   flutter:
     sdk: flutter
   flutter_carousel_slider: ^1.1.0
@@ -30,6 +31,7 @@ dependencies:
   intl: ^0.18.1
   json_annotation: ^4.8.1
   kakao_flutter_sdk: ^1.8.0
+  kakao_flutter_sdk_share: ^1.8.0
   path_provider: ^2.1.2
   permission_handler: ^11.2.0
   retrofit: ^4.0.3
@@ -55,6 +57,7 @@ flutter:
     - assets/icons/home/
     - assets/icons/notification/
     - assets/icons/onboarding/
+    - assets/icons/profile/
     - assets/icons/tour/
     - assets/images/
 

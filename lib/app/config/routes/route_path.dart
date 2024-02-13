@@ -13,9 +13,14 @@ class RoutePath {
   static const String term = "/term";
   static const String setProfile = "/set_profile";
 
-  // Add Tour
+  // Add New Tour
   static const String selectDate = "/select_date";
   static const String selectTitle = "/select_title";
   static const String selectRegion = "/select_region";
   static const String checkTourInformation = "/tour_check";
+
+  // Profile
+  static const String inviteTravel = "/invite_travel";
+  static const String notificationSetting = "/notification_setting";
+  static const String setting = "/setting";
 }
