@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/app_typeface.dart';
+import 'package:packit/app/service/auth_service.dart';
 import 'package:packit/presentation/main/controller/tour_controller.dart';
 
 import 'packit_toast.dart';
@@ -106,10 +107,10 @@ class _LogoutDialog extends StatelessWidget {
                     child: Text("취소", style: AppTypeFace.to.subHeading2Semibold.copyWith(color: AppColor.coolGray100)))),
             GestureDetector(
                 behavior: HitTestBehavior.translucent,
-                onTap: () async {},
+                onTap: () async => await AuthService.to.logout(),
                 child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 28.5.w),
-                    child: Text("삭제", style: AppTypeFace.to.subHeading2Semibold.copyWith(color: AppColor.alert)))),
+                    child: Text("확인", style: AppTypeFace.to.subHeading2Semibold.copyWith(color: AppColor.alert)))),
           ],
         )
       ],

@@ -7,6 +7,7 @@ import 'package:packit/app/service/auth_service.dart';
 import 'package:packit/domain/entities/login_response.dart';
 import 'package:packit/domain/entities/packit_login_entity.dart';
 import 'package:packit/domain/entities/packit_response.dart';
+import 'package:packit/domain/entities/token_response.dart';
 import 'package:packit/domain/enum/member_status_enum.dart';
 import 'package:packit/domain/usecases/auth_use_cases.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
@@ -34,9 +35,13 @@ class LoginController extends GetxController {
 
       switch (response.data.memberStatus) {
         case MemberStatusEnum.active:
+          AuthService.to.saveCredential(loginEntity);
+          AuthService.to.token = TokenResponse(accessToken: response.data.accessToken, refreshToken: response.data.refreshToken);
+          Get.toNamed(RoutePath.main);
           break;
         case MemberStatusEnum.waitingToJoin:
-          AuthService.to.loginResponse = response;
+          AuthService.to.saveCredential(loginEntity);
+          AuthService.to.token = TokenResponse(accessToken: response.data.accessToken, refreshToken: response.data.refreshToken);
           Get.toNamed(RoutePath.term);
           break;
         case MemberStatusEnum.delete:

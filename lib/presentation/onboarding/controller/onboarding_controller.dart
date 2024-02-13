@@ -7,10 +7,8 @@ import 'package:packit/app/service/auth_service.dart';
 import 'package:packit/app/util/image_util.dart';
 import 'package:packit/domain/entities/check_nick_response.dart';
 import 'package:packit/domain/entities/image_response.dart';
-import 'package:packit/domain/entities/packit_member_entity.dart';
 import 'package:packit/domain/entities/packit_register_entity.dart';
 import 'package:packit/domain/entities/packit_response.dart';
-import 'package:packit/domain/entities/register_response.dart';
 import 'package:packit/domain/usecases/member_use_cases.dart';
 
 class OnboardingController extends GetxController {
@@ -79,21 +77,16 @@ class OnboardingController extends GetxController {
   // Register
   Future<void> register() async {
     try {
-      PackitResponse<RegisterResponse> response = await memberUseCases.register.execute(PackitRegisterEntity(
-        nickname: nickNameTextController.text,
-        profileImageUrl: profileImageUrl,
-        checkTerms: isTermChecked.value,
-        enableNotification: isPushChecked.value,
-      ));
-
-      AuthService.to.member = PackitMemberEntity(
-        id: response.data.memberId,
-        nickname: nickNameTextController.text,
-        profileImageUrl: profileImageUrl,
-        enableNotification: isPushChecked.value,
+      await memberUseCases.register.execute(
+        PackitRegisterEntity(
+          nickname: nickNameTextController.text,
+          profileImageUrl: profileImageUrl,
+          checkTerms: isTermChecked.value,
+          enableNotification: isPushChecked.value,
+        ),
       );
 
-      // Get.offAllNamed(RoutePath.home);
+      await AuthService.to.login();
     } catch (e) {
       if (kDebugMode) print(e);
     }

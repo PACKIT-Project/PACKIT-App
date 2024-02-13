@@ -31,32 +31,20 @@ class AppBinding extends Bindings {
   void dependencies() {
     injectNetworkProvider();
     injectRepository();
-    injectService();
     injectUseCase();
+    injectService();
   }
 
   void injectNetworkProvider() {
     // Dio
-    Get.lazyPut(
-      () => (DioBuilder(options: BaseOptions(baseUrl: AppConst.baseUrl), withToken: false)),
-      tag: DioBuilderType.withoutToken.name,
-      fenix: true,
-    );
-    Get.lazyPut(
-      () => (DioBuilder(
-        options: BaseOptions(baseUrl: AppConst.baseUrl),
-        refreshDio: Get.find<DioBuilder>(tag: DioBuilderType.withoutToken.name),
-      )),
-      tag: DioBuilderType.withToken.name,
-      fenix: true,
-    );
+    Get.lazyPut(() => (DioBuilder(options: BaseOptions(baseUrl: AppConst.baseUrl))), fenix: true);
 
     // API
-    Get.lazyPut(() => AuthAPI(Get.find<DioBuilder>(tag: DioBuilderType.withoutToken.name)), fenix: true);
-    Get.lazyPut(() => DestinationAPI(Get.find<DioBuilder>(tag: DioBuilderType.withToken.name)), fenix: true);
-    Get.lazyPut(() => ImageAPI(Get.find<DioBuilder>(tag: DioBuilderType.withToken.name)), fenix: true);
-    Get.lazyPut(() => MemberAPI(Get.find<DioBuilder>(tag: DioBuilderType.withToken.name)), fenix: true);
-    Get.lazyPut(() => TravelAPI(Get.find<DioBuilder>(tag: DioBuilderType.withToken.name)), fenix: true);
+    Get.lazyPut(() => AuthAPI(Get.find<DioBuilder>()), fenix: true);
+    Get.lazyPut(() => DestinationAPI(Get.find<DioBuilder>()), fenix: true);
+    Get.lazyPut(() => ImageAPI(Get.find<DioBuilder>()), fenix: true);
+    Get.lazyPut(() => MemberAPI(Get.find<DioBuilder>()), fenix: true);
+    Get.lazyPut(() => TravelAPI(Get.find<DioBuilder>()), fenix: true);
   }
 
   void injectRepository() {

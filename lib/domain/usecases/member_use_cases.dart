@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 import '../entities/check_nick_response.dart';
+import '../entities/member_response.dart';
 import '../entities/packit_register_entity.dart';
 import '../entities/packit_response.dart';
 import '../entities/register_response.dart';
@@ -10,6 +11,7 @@ class MemberUseCases {
   final MemberRepository _repository = Get.find<MemberRepository>();
 
   CheckNicknameUseCase get checkNickname => CheckNicknameUseCase(_repository);
+  GetMemberProfileUseCase get getMemberProfile => GetMemberProfileUseCase(_repository);
   RegisterUseCase get register => RegisterUseCase(_repository);
 }
 
@@ -19,6 +21,15 @@ class CheckNicknameUseCase {
 
   Future<PackitResponse<CheckNickResponse>> execute(String nickname) async {
     return await _repository.checkNickname(nickname);
+  }
+}
+
+class GetMemberProfileUseCase {
+  final MemberRepository _repository;
+  GetMemberProfileUseCase(this._repository);
+
+  Future<PackitResponse<MemberResponse>> execute() async {
+    return await _repository.getMemberProfile();
   }
 }
 

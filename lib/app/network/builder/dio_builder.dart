@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+
 import 'package:packit/app/config/app_const.dart';
-import 'package:packit/app/network/interceptor/token_interceptor.dart';
+
+import '../interceptor/error_interceptor.dart';
+import '../interceptor/token_interceptor.dart';
 
 enum DioBuilderType { refresh, withToken, withoutToken }
 
@@ -12,8 +15,6 @@ class DioBuilder extends DioMixin implements Dio {
 
   DioBuilder({
     required BaseOptions options,
-    bool withToken = true,
-    Dio? refreshDio,
   }) {
     options = BaseOptions(
       responseType: ResponseType.json,
@@ -27,9 +28,10 @@ class DioBuilder extends DioMixin implements Dio {
     this.options = options;
 
     // Add interceptor for JWT
-    if (withToken && refreshDio != null) {
-      interceptors.add(TokenInterceptor(refreshDio));
-    }
+    interceptors.add(TokenInterceptor());
+
+    // Add interceptor for error handling
+    interceptors.add(ErrorInterceptor());
 
     // Add interceptor for logging
     if (kDebugMode) {
