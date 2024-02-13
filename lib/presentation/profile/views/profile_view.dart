@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/app_typeface.dart';
+import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/presentation/profile/controller/profile_tab_controller.dart';
 import 'package:packit/presentation/widget/packit_appbar.dart';
 
@@ -19,7 +20,10 @@ class ProfileView extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 16.w),
-            child: GestureDetector(onTap: () {}, child: SvgPicture.asset('assets/icons/profile/settings.svg', width: 24.w, height: 24.w)),
+            child: GestureDetector(
+              onTap: () => Get.toNamed(RoutePath.setting),
+              child: SvgPicture.asset('assets/icons/profile/settings.svg', width: 24.w, height: 24.w),
+            ),
           ),
         ],
       ),

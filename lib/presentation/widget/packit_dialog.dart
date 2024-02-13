@@ -8,7 +8,7 @@ import 'package:packit/presentation/main/controller/tour_controller.dart';
 
 import 'packit_toast.dart';
 
-enum PackitDialogType { deleteTravel }
+enum PackitDialogType { deleteTravel, logout }
 
 showPackitDialog(BuildContext context, PackitDialogType type, dynamic data) async {
   return await showDialog(
@@ -30,6 +30,7 @@ showPackitDialog(BuildContext context, PackitDialogType type, dynamic data) asyn
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 if (type == PackitDialogType.deleteTravel) _DeleteTravelDialog(data),
+                if (type == PackitDialogType.logout) const _LogoutDialog(),
               ],
             ),
           ),
@@ -56,9 +57,13 @@ class _DeleteTravelDialog extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             GestureDetector(
+                behavior: HitTestBehavior.translucent,
                 onTap: () => Navigator.of(context).pop(false),
-                child: Text("취소", style: AppTypeFace.to.subHeading2Semibold.copyWith(color: AppColor.coolGray100))),
+                child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 28.5.w),
+                    child: Text("취소", style: AppTypeFace.to.subHeading2Semibold.copyWith(color: AppColor.coolGray100)))),
             GestureDetector(
+                behavior: HitTestBehavior.translucent,
                 onTap: () async {
                   try {
                     await Get.find<TourController>().deleteTravel(travelId);
@@ -71,7 +76,40 @@ class _DeleteTravelDialog extends StatelessWidget {
                     if (kDebugMode) print(e);
                   }
                 },
-                child: Text("삭제", style: AppTypeFace.to.subHeading2Semibold.copyWith(color: AppColor.alert))),
+                child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 28.5.w),
+                    child: Text("삭제", style: AppTypeFace.to.subHeading2Semibold.copyWith(color: AppColor.alert)))),
+          ],
+        )
+      ],
+    );
+  }
+}
+
+class _LogoutDialog extends StatelessWidget {
+  const _LogoutDialog();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text("로그아웃 하시겠습니까?", style: AppTypeFace.to.subHeading2Semibold.copyWith(color: AppColor.coolGray400)),
+        SizedBox(height: 53.h),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                onTap: () => Navigator.of(context).pop(false),
+                child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 28.5.w),
+                    child: Text("취소", style: AppTypeFace.to.subHeading2Semibold.copyWith(color: AppColor.coolGray100)))),
+            GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                onTap: () async {},
+                child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 28.5.w),
+                    child: Text("삭제", style: AppTypeFace.to.subHeading2Semibold.copyWith(color: AppColor.alert)))),
           ],
         )
       ],

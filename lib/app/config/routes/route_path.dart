@@ -21,4 +21,5 @@ class RoutePath {
 
   // Profile
   static const String inviteTravel = "/invite_travel";
+  static const String setting = "/setting";
 }

@@ -16,6 +16,7 @@ import 'package:packit/presentation/new_tour/views/select_date_page.dart';
 import 'package:packit/presentation/new_tour/views/select_region_page.dart';
 import 'package:packit/presentation/new_tour/views/select_title_page.dart';
 import 'package:packit/presentation/profile/views/invite_travel_page.dart';
+import 'package:packit/presentation/profile/views/setting_page.dart';
 
 class Routes {
   static List<GetPage> routes = [
@@ -79,6 +80,10 @@ class Routes {
     GetPage(
       name: RoutePath.inviteTravel,
       page: () => InviteTravelPage(),
+    ),
+    GetPage(
+      name: RoutePath.setting,
+      page: () => const SettingPage(),
     ),
   ];
 }
