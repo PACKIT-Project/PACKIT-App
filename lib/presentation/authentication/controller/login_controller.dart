@@ -2,13 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_naver_login/flutter_naver_login.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
-import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/app/service/auth_service.dart';
-import 'package:packit/domain/entities/login_response.dart';
 import 'package:packit/domain/entities/packit_login_entity.dart';
-import 'package:packit/domain/entities/packit_response.dart';
-import 'package:packit/domain/entities/token_response.dart';
-import 'package:packit/domain/enum/member_status_enum.dart';
 import 'package:packit/domain/usecases/auth_use_cases.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
@@ -19,7 +14,7 @@ class LoginController extends GetxController {
 
   final AuthUseCases authUseCases = Get.find<AuthUseCases>();
 
-  Future<void> login(SSOType ssoType) async {
+  Future<void> loginWithSSO(SSOType ssoType) async {
     PackitLoginEntity? loginEntity;
 
     if (ssoType == SSOType.kakao) {
@@ -31,22 +26,8 @@ class LoginController extends GetxController {
     }
 
     if (loginEntity != null) {
-      PackitResponse<LoginResponse> response = await authUseCases.login.execute(loginEntity);
-
-      switch (response.data.memberStatus) {
-        case MemberStatusEnum.active:
-          AuthService.to.saveCredential(loginEntity);
-          AuthService.to.token = TokenResponse(accessToken: response.data.accessToken, refreshToken: response.data.refreshToken);
-          Get.toNamed(RoutePath.main);
-          break;
-        case MemberStatusEnum.waitingToJoin:
-          AuthService.to.saveCredential(loginEntity);
-          AuthService.to.token = TokenResponse(accessToken: response.data.accessToken, refreshToken: response.data.refreshToken);
-          Get.toNamed(RoutePath.term);
-          break;
-        case MemberStatusEnum.delete:
-          break;
-      }
+      await AuthService.to.saveCredential(loginEntity);
+      await AuthService.to.login();
     }
   }
 
