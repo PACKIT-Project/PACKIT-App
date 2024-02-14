@@ -9,12 +9,12 @@ part 'check_list_response.g.dart';
 @freezed
 class CheckListResponse with _$CheckListResponse {
   const factory CheckListResponse({
-    required int id,
+    required int travelId,
     required String title,
     required String destination,
     @JsonKey(fromJson: dateFromJson) required DateTime startDate,
     @JsonKey(fromJson: dateFromJson) required DateTime endDate,
-    @JsonKey(fromJson: dDayFromJson) required int dDay,
+    required int dDay,
     required int memberNum,
     required List<ClusterResponse> travelClusterList,
   }) = _CheckListResponse;
@@ -59,10 +59,6 @@ class ItemResponse with _$ItemResponse {
   }) = _ItemResponse;
 
   factory ItemResponse.fromJson(Map<String, Object?> json) => _$ItemResponseFromJson(json);
-}
-
-int dDayFromJson(String value) {
-  return int.parse(value);
 }
 
 DateTime dateFromJson(String value) {
