@@ -5,6 +5,7 @@ class AppColor {
   static const Color mainBlue = Color(0xFF0EA8FF);
   static const Color mainBlueInActive = Color(0xFFBFEBFF);
   static const Color mainBlue1 = Color(0xFFD1F1FF);
+  static const Color mainBlue2 = Color(0xFFE7F8FF);
 
   // Gray(Text, Icon)
   static const Color coolGray100 = Color(0xFF5C6983);
