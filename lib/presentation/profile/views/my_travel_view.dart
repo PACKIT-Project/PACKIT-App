@@ -99,7 +99,7 @@ class _TravelDetailView extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(6.r), color: AppColor.gray1),
                       child: Row(children: [
-                        SvgPicture.asset('assets/icons/profile/user.svg', width: 10.w, height: 10.w),
+                        SvgPicture.asset('assets/icons/user.svg', width: 10.w, height: 10.w),
                         SizedBox(width: 3.w),
                         Text("${travelList[i].memberNum}/8", style: AppTypeFace.to.caption3Semibold.copyWith(color: AppColor.gray5)),
                       ]),
@@ -113,7 +113,7 @@ class _TravelDetailView extends StatelessWidget {
                 SizedBox(height: 4.h),
                 Row(
                   children: [
-                    SvgPicture.asset('assets/icons/profile/location.svg'),
+                    SvgPicture.asset('assets/icons/location.svg'),
                     SizedBox(width: 1.35.w),
                     Text(
                       "${travelList[i].destination}·${travelList[i].endDate.toNDayString(travelList[i].startDate)}",

@@ -5,9 +5,11 @@ import 'package:get/get.dart';
 import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/app_typeface.dart';
 import 'package:packit/app/config/routes/route_path.dart';
+import 'package:packit/presentation/home/views/travel_view.dart';
+import 'package:packit/presentation/main/controller/tour_controller.dart';
 import 'package:packit/presentation/widget/packit_appbar.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends GetView<TourController> {
   const HomeView({super.key});
 
   @override
@@ -23,15 +25,30 @@ class HomeView extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset('assets/images/travel.svg'),
-            SizedBox(height: 20.17.h),
-            Text("새로운 여행 준비를 시작해보세요.", style: AppTypeFace.to.body3SemiBold.copyWith(color: AppColor.gray4))
-          ],
-        ),
+      body: Obx(
+        () {
+          if (controller.selectedTravel.value == null) return const _EmptyView();
+
+          return const TravelView();
+        },
+      ),
+    );
+  }
+}
+
+class _EmptyView extends StatelessWidget {
+  const _EmptyView();
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset('assets/images/travel.svg'),
+          SizedBox(height: 20.17.h),
+          Text("새로운 여행 준비를 시작해보세요.", style: AppTypeFace.to.body3SemiBold.copyWith(color: AppColor.gray4))
+        ],
       ),
     );
   }
