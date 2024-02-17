@@ -68,6 +68,8 @@ class PackitMainMenuAnchor extends StatelessWidget {
           behavior: HitTestBehavior.translucent,
           onTap: () {
             controller.close();
+
+            Get.toNamed(RoutePath.travelRemind);
           },
           child: SizedBox(
             width: 148.w,

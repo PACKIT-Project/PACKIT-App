@@ -3,6 +3,9 @@ class RoutePath {
   static const String login = "/login";
 
   // Home
+  static const String travelRemind = "/travel_remind";
+
+  // Main
   static const String main = "/main";
 
   // Notification
