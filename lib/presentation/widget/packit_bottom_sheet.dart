@@ -12,6 +12,7 @@ showPackitBottomSheet(BuildContext context) async {
     barrierColor: Colors.black.withOpacity(0.4),
     elevation: 0,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+    showDragHandle: true,
     builder: (BuildContext context) {
       return SafeArea(
         child: Container(
