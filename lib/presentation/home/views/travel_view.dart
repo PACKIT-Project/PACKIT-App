@@ -179,43 +179,47 @@ class _TravelClusterWidget extends GetView<TourController> {
     return Obx(
       () => SizedBox(
         width: double.maxFinite,
+        height: 31.w,
         child: Stack(
           children: [
-            SingleChildScrollView(
-              child: Wrap(
-                spacing: 6.w,
-                children: [
-                  SizedBox(width: 9.75.w),
-                  for (int i = 0; i < controller.selectedCheckList.value!.travelClusterList.length; i++) ...[
-                    GestureDetector(
-                      onTap: () => controller.selectedClusterIndex.value = i,
-                      child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.w),
-                        decoration: BoxDecoration(
-                          color: controller.selectedClusterIndex.value == i ? AppColor.mainBlue2 : AppColor.gray1,
-                          border: Border.all(
-                              width: 1.4, color: controller.selectedClusterIndex.value == i ? AppColor.mainBlue : AppColor.gray2),
-                          borderRadius: BorderRadius.circular(6.r),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              controller.selectedCheckList.value!.travelClusterList[i].title,
-                              style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
-                            ),
-                            SizedBox(width: 2.w),
-                            Text(
-                              controller.selectedCheckList.value!.travelClusterList[i].allItemNum.toString(),
-                              style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: const Color(0xFF0EA8FF)),
-                            ),
-                          ],
-                        ),
+            ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: controller.selectedCheckList.value!.travelClusterList.length,
+              itemBuilder: (BuildContext context, int i) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                    left: i == 0 ? 15.75.w : 0,
+                    right: controller.selectedCheckList.value!.travelClusterList.length - 1 == i ? 53.25.w : 6.w,
+                  ),
+                  child: GestureDetector(
+                    onTap: () => controller.selectedClusterIndex.value = i,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.w),
+                      decoration: BoxDecoration(
+                        color: controller.selectedClusterIndex.value == i ? AppColor.mainBlue2 : AppColor.gray1,
+                        border:
+                            Border.all(width: 1.4, color: controller.selectedClusterIndex.value == i ? AppColor.mainBlue : AppColor.gray2),
+                        borderRadius: BorderRadius.circular(6.r),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            controller.selectedCheckList.value!.travelClusterList[i].title,
+                            style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(width: 2.w),
+                          Text(
+                            controller.selectedCheckList.value!.travelClusterList[i].allItemNum.toString(),
+                            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: const Color(0xFF0EA8FF)),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ],
-              ),
+                  ),
+                );
+              },
             ),
             Positioned.fill(
               child: Align(
@@ -223,7 +227,13 @@ class _TravelClusterWidget extends GetView<TourController> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    SvgPicture.asset('assets/icons/home/list_add.svg'),
+                    GestureDetector(
+                        onTap: () async => await showPackitBottomSheet(
+                              context,
+                              PackitBottomSheetType.addCluster,
+                              data: controller.selectedTravel.value!.id,
+                            ),
+                        child: SvgPicture.asset('assets/icons/home/list_add.svg')),
                     Container(
                       width: 16.25.w,
                       decoration: BoxDecoration(

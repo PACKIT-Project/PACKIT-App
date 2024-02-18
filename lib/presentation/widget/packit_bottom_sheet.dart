@@ -1,4 +1,5 @@
 import 'package:animated_flip_counter/animated_flip_counter.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,9 +11,9 @@ import 'package:packit/domain/entities/travel_response.dart';
 import 'package:packit/presentation/main/controller/tour_controller.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-enum PackitBottomSheetType { deleteMember, completeCheckList, travelList }
+enum PackitBottomSheetType { addCluster, deleteMember, completeCheckList, travelList }
 
-showPackitBottomSheet(BuildContext context, PackitBottomSheetType type) async {
+showPackitBottomSheet(BuildContext context, PackitBottomSheetType type, {dynamic data}) async {
   await showModalBottomSheet(
     context: context,
     backgroundColor: Colors.white,
@@ -26,6 +27,7 @@ showPackitBottomSheet(BuildContext context, PackitBottomSheetType type) async {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              if (type == PackitBottomSheetType.addCluster) _AddClusterBottomSheet(data),
               if (type == PackitBottomSheetType.deleteMember) const _DeleteMemberBottomSheet(),
               if (type == PackitBottomSheetType.completeCheckList) const _CompleteCheckListBottomSheet(),
               if (type == PackitBottomSheetType.travelList) const _TravelListBottomSheet(),
@@ -35,6 +37,72 @@ showPackitBottomSheet(BuildContext context, PackitBottomSheetType type) async {
       );
     },
   );
+}
+
+class _AddClusterBottomSheet extends GetView<TourController> {
+  const _AddClusterBottomSheet(this.travelId);
+
+  final int travelId;
+
+  @override
+  Widget build(BuildContext context) {
+    final TextEditingController textEditingController = TextEditingController();
+    final FocusNode focusNode = FocusNode();
+    focusNode.requestFocus();
+
+    return Padding(
+      padding: EdgeInsets.only(left: 10.w, right: 16.w, bottom: MediaQuery.of(context).viewInsets.bottom + 14.h),
+      child: Column(
+        children: [
+          const _BottomSheetDragHandle(),
+          TextField(
+            focusNode: focusNode,
+            controller: textEditingController,
+            style: AppTypeFace.to.body1Medium.copyWith(color: AppColor.coolGray400),
+            decoration: InputDecoration(
+              hintText: "추가할 할 일 그룹의 제목을 입력해주세요.",
+              hintStyle: AppTypeFace.to.body3SemiBold.copyWith(color: AppColor.gray3),
+              border: InputBorder.none,
+              isDense: true,
+              contentPadding: EdgeInsets.symmetric(horizontal: 10.w),
+            ),
+            onSubmitted: (value) async {
+              try {
+                await controller.createCluster(travelId, textEditingController.text);
+
+                Get.back();
+              } catch (e) {
+                if (kDebugMode) print(e);
+              }
+            },
+          ),
+          SizedBox(height: 25.h),
+          Align(
+            alignment: Alignment.centerRight,
+            child: SizedBox(
+              width: 50.w,
+              height: 30.w,
+              child: _BottomSheetButton(
+                "추가",
+                color: AppColor.coolGray100,
+                textColor: Colors.white,
+                textStyle: AppTypeFace.to.body6Medium,
+                onTap: () async {
+                  try {
+                    await controller.createCluster(travelId, textEditingController.text);
+
+                    Get.back();
+                  } catch (e) {
+                    if (kDebugMode) print(e);
+                  }
+                },
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
 }
 
 class _CompleteCheckListBottomSheet extends StatefulWidget {
@@ -169,16 +237,7 @@ class _TravelListBottomSheet extends StatelessWidget {
           height: 400.h,
           child: Column(
             children: [
-              SizedBox(height: 8.h),
-              Container(
-                width: 40.w,
-                height: 5.h,
-                decoration: BoxDecoration(
-                  color: AppColor.gray3,
-                  borderRadius: BorderRadius.circular(20.r),
-                ),
-              ),
-              SizedBox(height: 17.h),
+              const _BottomSheetDragHandle(),
               SizedBox(
                 height: 28.h,
                 child: TabBar(
@@ -332,12 +391,13 @@ class _TravelListBottomSheet extends StatelessWidget {
 }
 
 class _BottomSheetButton extends StatelessWidget {
-  const _BottomSheetButton(this.text, {required this.textColor, required this.color, required this.onTap});
+  const _BottomSheetButton(this.text, {required this.textColor, required this.color, required this.onTap, this.textStyle});
 
   final String text;
   final Color textColor;
   final Color color;
   final VoidCallback onTap;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -350,8 +410,31 @@ class _BottomSheetButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.r),
           color: color,
         ),
-        child: Center(child: Text(text, style: AppTypeFace.to.body2Bold.copyWith(color: textColor))),
+        child:
+            Center(child: Text(text, style: textStyle?.copyWith(color: textColor) ?? AppTypeFace.to.body2Bold.copyWith(color: textColor))),
       ),
+    );
+  }
+}
+
+class _BottomSheetDragHandle extends StatelessWidget {
+  const _BottomSheetDragHandle();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(height: 8.h),
+        Container(
+          width: 40.w,
+          height: 5.h,
+          decoration: BoxDecoration(
+            color: AppColor.gray3,
+            borderRadius: BorderRadius.circular(20.r),
+          ),
+        ),
+        SizedBox(height: 17.h),
+      ],
     );
   }
 }
