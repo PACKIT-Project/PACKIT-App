@@ -11,6 +11,7 @@ import 'package:packit/app/extension/travel_date.dart';
 import 'package:packit/domain/entities/check_list_response.dart';
 import 'package:packit/domain/entities/travel_response.dart';
 import 'package:packit/presentation/main/controller/tour_controller.dart';
+import 'package:packit/presentation/widget/packit_bottom_sheet.dart';
 import 'package:packit/presentation/widget/packit_checkbox.dart';
 import 'package:packit/presentation/widget/packit_menu_anchor.dart';
 import 'package:progress_border/progress_border.dart';
@@ -76,7 +77,9 @@ class _TravelViewHeaderWidget extends StatelessWidget {
                 children: [
                   Text(travel.title, style: AppTypeFace.to.display2Semibold.copyWith(color: AppColor.coolGray400)),
                   SizedBox(width: 6.w),
-                  SvgPicture.asset('assets/icons/home/arrow_down.svg', width: 14.w, height: 14.w),
+                  GestureDetector(
+                      onTap: () async => showPackitBottomSheet(context, PackitBottomSheetType.travelList),
+                      child: SvgPicture.asset('assets/icons/home/arrow_down.svg', width: 14.w, height: 14.w)),
                 ],
               ),
               Row(

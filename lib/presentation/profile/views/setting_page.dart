@@ -72,7 +72,7 @@ class SettingPage extends StatelessWidget {
             Center(
               child: GestureDetector(
                 behavior: HitTestBehavior.translucent,
-                onTap: () async => await showPackitBottomSheet(context),
+                onTap: () async => await showPackitBottomSheet(context, PackitBottomSheetType.deleteMember),
                 child: Text(
                   "회원탈퇴",
                   style: AppTypeFace.to.body3SemiBold.copyWith(color: AppColor.coolGray100, decoration: TextDecoration.underline),
