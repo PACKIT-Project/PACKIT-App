@@ -1,3 +1,4 @@
+import 'package:animated_flip_counter/animated_flip_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,8 +8,9 @@ import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/app_typeface.dart';
 import 'package:packit/domain/entities/travel_response.dart';
 import 'package:packit/presentation/main/controller/tour_controller.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
-enum PackitBottomSheetType { deleteMember, travelList }
+enum PackitBottomSheetType { deleteMember, completeCheckList, travelList }
 
 showPackitBottomSheet(BuildContext context, PackitBottomSheetType type) async {
   await showModalBottomSheet(
@@ -25,6 +27,7 @@ showPackitBottomSheet(BuildContext context, PackitBottomSheetType type) async {
             mainAxisSize: MainAxisSize.min,
             children: [
               if (type == PackitBottomSheetType.deleteMember) const _DeleteMemberBottomSheet(),
+              if (type == PackitBottomSheetType.completeCheckList) const _CompleteCheckListBottomSheet(),
               if (type == PackitBottomSheetType.travelList) const _TravelListBottomSheet(),
             ],
           ),
@@ -32,6 +35,125 @@ showPackitBottomSheet(BuildContext context, PackitBottomSheetType type) async {
       );
     },
   );
+}
+
+class _CompleteCheckListBottomSheet extends StatefulWidget {
+  const _CompleteCheckListBottomSheet();
+
+  @override
+  State<_CompleteCheckListBottomSheet> createState() => _CompleteCheckListBottomSheetState();
+}
+
+class _CompleteCheckListBottomSheetState extends State<_CompleteCheckListBottomSheet> with SingleTickerProviderStateMixin {
+  late AnimationController animationController;
+
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 2000));
+    animationController.forward(from: 0);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 38.w),
+      child: Column(
+        children: [
+          SizedBox(height: 49.2.h),
+          AnimatedBuilder(
+            animation: animationController,
+            builder: (BuildContext context, Widget? child) {
+              return CircularPercentIndicator(
+                radius: 45.w,
+                lineWidth: 10.0,
+                percent: animationController.value,
+                startAngle: 0.0,
+                circularStrokeCap: CircularStrokeCap.round,
+                backgroundColor: Colors.transparent,
+                linearGradient: const LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  tileMode: TileMode.clamp,
+                  stops: [0.0, 1.0],
+                  colors: <Color>[Color(0xFF0EA8FF), Color(0xFF28FFCB)],
+                ),
+                center: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AnimatedFlipCounter(
+                      duration: const Duration(milliseconds: 200),
+                      value: (animationController.value * 100).toInt(),
+                      textStyle: TextStyle(fontSize: 15.68.sp, fontWeight: FontWeight.w600, color: AppColor.coolGray300),
+                    ),
+                    SizedBox(width: 1.96.w),
+                    Text(
+                      "%",
+                      style: TextStyle(fontSize: 15.68.sp, fontWeight: FontWeight.w600, color: AppColor.coolGray100),
+                    )
+                  ],
+                ),
+              );
+            },
+          ),
+          SizedBox(height: 26.11.h),
+          Text("여행 전 할 일을 모두 완료했어요", style: AppTypeFace.to.display2Semibold.copyWith(color: AppColor.coolGray400)),
+          Text("여행 친구들에게 완료 알림을 보내보세요.", style: AppTypeFace.to.body4SemiBold.copyWith(color: AppColor.coolGray100)),
+          SizedBox(height: 57.1.h),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(child: _BottomSheetButton("나중에", textColor: AppColor.coolGray100, color: AppColor.gray2, onTap: () => Get.back())),
+              SizedBox(width: 12.65.w),
+              Expanded(child: _BottomSheetButton("알림 보내기", textColor: Colors.white, color: AppColor.mainBlue, onTap: () => Get.back())),
+            ],
+          ),
+          SizedBox(height: 20.h),
+        ],
+      ),
+    );
+  }
+}
+
+class _DeleteMemberBottomSheet extends StatelessWidget {
+  const _DeleteMemberBottomSheet();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.fromLTRB(38.w, 54.1.h, 38.w, 20.w),
+      child: Column(
+        children: [
+          Text("정말 탈퇴하시겠습니까?", style: AppTypeFace.to.display2Semibold.copyWith(color: AppColor.coolGray400)),
+          SizedBox(height: 4.99.h),
+          Text("회원탈퇴 시 PACKIT의 모든 여행 데이터가 삭제되며,\n계정 복구가 불가능합니다.",
+              style: AppTypeFace.to.body4SemiBold.copyWith(color: AppColor.coolGray100), textAlign: TextAlign.center),
+          SizedBox(height: 36.1.h),
+          Row(
+            children: [
+              Expanded(
+                child: _BottomSheetButton(
+                  "아니요",
+                  onTap: () => Navigator.pop(context),
+                  textColor: AppColor.coolGray100,
+                  color: AppColor.gray2,
+                ),
+              ),
+              SizedBox(width: 12.65.w),
+              Expanded(
+                child: _BottomSheetButton(
+                  "네",
+                  onTap: () {},
+                  textColor: Colors.white,
+                  color: AppColor.mainBlue,
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    );
+  }
 }
 
 class _TravelListBottomSheet extends StatelessWidget {
@@ -204,47 +326,6 @@ class _TravelListBottomSheet extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class _DeleteMemberBottomSheet extends StatelessWidget {
-  const _DeleteMemberBottomSheet();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(38.w, 54.1.h, 38.w, 20.w),
-      child: Column(
-        children: [
-          Text("정말 탈퇴하시겠습니까?", style: AppTypeFace.to.display2Semibold.copyWith(color: AppColor.coolGray400)),
-          SizedBox(height: 4.99.h),
-          Text("회원탈퇴 시 PACKIT의 모든 여행 데이터가 삭제되며,\n계정 복구가 불가능합니다.",
-              style: AppTypeFace.to.body4SemiBold.copyWith(color: AppColor.coolGray100), textAlign: TextAlign.center),
-          SizedBox(height: 36.1.h),
-          Row(
-            children: [
-              Expanded(
-                child: _BottomSheetButton(
-                  "아니요",
-                  onTap: () => Navigator.pop(context),
-                  textColor: AppColor.coolGray100,
-                  color: AppColor.gray2,
-                ),
-              ),
-              SizedBox(width: 12.65.w),
-              Expanded(
-                child: _BottomSheetButton(
-                  "네",
-                  onTap: () {},
-                  textColor: Colors.white,
-                  color: AppColor.mainBlue,
-                ),
-              ),
-            ],
-          )
-        ],
       ),
     );
   }

@@ -6,6 +6,7 @@ import 'package:packit/domain/entities/travel_member_response.dart';
 import 'package:packit/domain/entities/travel_response.dart';
 import 'package:packit/domain/usecases/item_use_cases.dart';
 import 'package:packit/domain/usecases/travel_use_cases.dart';
+import 'package:packit/presentation/widget/packit_bottom_sheet.dart';
 
 class TourController extends GetxController {
   final TravelUseCases travelUseCases = Get.find<TravelUseCases>();
@@ -41,6 +42,11 @@ class TourController extends GetxController {
         await itemUseCases.checkItem.execute(itemId);
       }
       await getMyCheckList(selectedTravel.value!.id);
+      await getTravelMembers(selectedTravel.value!.id);
+
+      if (travelMemberList[0].checkedNum != 0 && travelMemberList[0].unCheckedNum == 0) {
+        await showPackitBottomSheet(Get.context!, PackitBottomSheetType.completeCheckList);
+      }
     } catch (e) {
       if (kDebugMode) print(e);
     }
@@ -125,11 +131,5 @@ class TourController extends GetxController {
     } else if (pastTravelList.isNotEmpty) {
       selectedTravel.value = pastTravelList.first;
     }
-
-    ever(selectedCheckList, (CheckListResponse? checkList) async {
-      if (checkList != null) {
-        await getTravelMembers(selectedTravel.value!.id);
-      }
-    });
   }
 }
