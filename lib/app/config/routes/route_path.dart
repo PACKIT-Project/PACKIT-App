@@ -3,6 +3,8 @@ class RoutePath {
   static const String login = "/login";
 
   // Home
+  static const String clusterDetail = "/cluster_detail";
+  static const String clusterManage = "/cluster_manage";
   static const String travelRemind = "/travel_remind";
 
   // Main

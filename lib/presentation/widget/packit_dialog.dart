@@ -9,7 +9,7 @@ import 'package:packit/presentation/main/controller/tour_controller.dart';
 
 import 'packit_toast.dart';
 
-enum PackitDialogType { deleteTravel, logout }
+enum PackitDialogType { deleteCluster, deleteTravel, logout }
 
 showPackitDialog(BuildContext context, PackitDialogType type, dynamic data) async {
   return await showDialog(
@@ -18,7 +18,7 @@ showPackitDialog(BuildContext context, PackitDialogType type, dynamic data) asyn
       return GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
         child: AlertDialog(
-          contentPadding: EdgeInsets.symmetric(horizontal: 56.w, vertical: 24.h),
+          contentPadding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 24.h),
           insetPadding: EdgeInsets.symmetric(horizontal: 35.5.w),
           scrollable: true,
           surfaceTintColor: Colors.white,
@@ -30,6 +30,7 @@ showPackitDialog(BuildContext context, PackitDialogType type, dynamic data) asyn
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                if (type == PackitDialogType.deleteCluster) _DeleteClusterDialog(data),
                 if (type == PackitDialogType.deleteTravel) _DeleteTravelDialog(data),
                 if (type == PackitDialogType.logout) const _LogoutDialog(),
               ],
@@ -39,6 +40,49 @@ showPackitDialog(BuildContext context, PackitDialogType type, dynamic data) asyn
       );
     },
   );
+}
+
+class _DeleteClusterDialog extends StatelessWidget {
+  const _DeleteClusterDialog(this.data);
+
+  final int data;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text("준비물 그룹을 삭제하시겠어요?", style: AppTypeFace.to.subHeading2Semibold.copyWith(color: AppColor.coolGray400)),
+        SizedBox(height: 9.h),
+        Text("삭제하신 항목은 복구가 불가능합니다.", style: AppTypeFace.to.body4SemiBold.copyWith(color: AppColor.coolGray200)),
+        SizedBox(height: 47.h),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                onTap: () => Navigator.of(context).pop(false),
+                child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 28.5.w),
+                    child: Text("취소", style: AppTypeFace.to.subHeading2Semibold.copyWith(color: AppColor.coolGray100)))),
+            GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                onTap: () async {
+                  try {
+                    await Get.find<TourController>().deleteCluster(data);
+                    Get.back();
+                    if (context.mounted) await showPackitToast(context, "삭제가 완료되었습니다.");
+                  } catch (e) {
+                    if (kDebugMode) print(e);
+                  }
+                },
+                child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 28.5.w),
+                    child: Text("삭제", style: AppTypeFace.to.subHeading2Semibold.copyWith(color: AppColor.alert)))),
+          ],
+        )
+      ],
+    );
+  }
 }
 
 class _DeleteTravelDialog extends StatelessWidget {

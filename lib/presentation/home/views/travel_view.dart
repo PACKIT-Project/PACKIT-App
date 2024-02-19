@@ -7,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/app_typeface.dart';
+import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/app/extension/travel_date.dart';
 import 'package:packit/domain/entities/check_list_response.dart';
 import 'package:packit/domain/entities/travel_response.dart';
@@ -157,11 +158,15 @@ class _TravelMemberWidget extends GetView<TourController> {
                     Text(controller.travelMemberList[i].nickName, style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w600)),
                   ],
                 ),
-              Container(
-                width: 54.w,
-                height: 54.w,
-                decoration: const BoxDecoration(color: AppColor.gray1, shape: BoxShape.circle),
-                child: Icon(Icons.add, size: 24.w, color: AppColor.coolGray100),
+              GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                onTap: () => Get.toNamed(RoutePath.inviteTravel, arguments: controller.selectedTravel.value),
+                child: Container(
+                  width: 54.w,
+                  height: 54.w,
+                  decoration: const BoxDecoration(color: AppColor.gray1, shape: BoxShape.circle),
+                  child: Icon(Icons.add, size: 24.w, color: AppColor.coolGray100),
+                ),
               ),
             ],
           ),
@@ -368,15 +373,6 @@ class _TravelCategoryWidget extends GetView<TourController> {
                               ),
                             ),
                           ],
-                        ),
-                      ),
-                      SizedBox(height: 2.w),
-                      Align(
-                        alignment: Alignment.centerRight,
-                        child: Text(
-                          "리스트 삭제",
-                          style: AppTypeFace.to.caption1Semibold
-                              .copyWith(color: const Color(0xFF3F4C61), decoration: TextDecoration.underline),
                         ),
                       ),
                     ],

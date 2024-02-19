@@ -1,17 +1,22 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:packit/domain/entities/check_list_response.dart';
+import 'package:packit/domain/entities/packit_category_entity.dart';
+import 'package:packit/domain/entities/packit_cluster_entity.dart';
 import 'package:packit/domain/entities/packit_item_entity.dart';
 import 'package:packit/domain/entities/travel_member_response.dart';
 import 'package:packit/domain/entities/travel_response.dart';
+import 'package:packit/domain/usecases/category_use_cases.dart';
+import 'package:packit/domain/usecases/cluster_use_cases.dart';
 import 'package:packit/domain/usecases/item_use_cases.dart';
 import 'package:packit/domain/usecases/travel_use_cases.dart';
 import 'package:packit/presentation/widget/packit_bottom_sheet.dart';
 
 class TourController extends GetxController {
-  final TravelUseCases travelUseCases = Get.find<TravelUseCases>();
-
+  final CategoryUseCases categoryUseCases = Get.find<CategoryUseCases>();
+  final ClusterUseCases clusterUseCases = Get.find<ClusterUseCases>();
   final ItemUseCases itemUseCases = Get.find<ItemUseCases>();
+  final TravelUseCases travelUseCases = Get.find<TravelUseCases>();
 
   final RxList<TravelResponse> pastTravelList = <TravelResponse>[].obs;
   final RxList<TravelResponse> upcomingTravelList = <TravelResponse>[].obs;
@@ -24,6 +29,17 @@ class TourController extends GetxController {
   final RxInt selectedClusterIndex = 0.obs;
   final RxInt selectedCategoryIndex = 0.obs;
   final RxInt selectedItemIndex = 0.obs;
+
+  Future<void> createCluster(int travelId, String title) async {
+    try {
+      await clusterUseCases.createCluster.execute(PackitClusterPostEntity(travelId: travelId, title: title));
+
+      await getTravelMembers(travelId);
+      await getMyCheckList(travelId);
+    } catch (e) {
+      if (kDebugMode) print(e);
+    }
+  }
 
   Future<void> createItem(int categoryId, String title) async {
     try {
@@ -47,6 +63,30 @@ class TourController extends GetxController {
       if (travelMemberList[0].checkedNum != 0 && travelMemberList[0].unCheckedNum == 0) {
         await showPackitBottomSheet(Get.context!, PackitBottomSheetType.completeCheckList);
       }
+    } catch (e) {
+      if (kDebugMode) print(e);
+    }
+  }
+
+  Future<void> deleteCategory(int categoryId) async {
+    try {
+      await categoryUseCases.deleteCategory.execute(categoryId);
+
+      await getMyCheckList(selectedTravel.value!.id);
+      await getTravelMembers(selectedTravel.value!.id);
+
+      Get.back();
+    } catch (e) {
+      if (kDebugMode) print(e);
+    }
+  }
+
+  Future<void> deleteCluster(int clusterId) async {
+    try {
+      await clusterUseCases.deleteCluster.execute(clusterId);
+
+      await getMyCheckList(selectedTravel.value!.id);
+      await getTravelMembers(selectedTravel.value!.id);
     } catch (e) {
       if (kDebugMode) print(e);
     }
@@ -108,6 +148,16 @@ class TourController extends GetxController {
     try {
       List<TravelResponse> response = (await travelUseCases.getUpcomingTravelsUseCase.execute()).data;
       upcomingTravelList.assignAll(response);
+    } catch (e) {
+      if (kDebugMode) print(e);
+    }
+  }
+
+  Future<void> updateCategory(int categoryId, String title) async {
+    try {
+      await categoryUseCases.updateCategory.execute(PackitCategoryPatchEntity(categoryId: categoryId, title: title));
+
+      await getMyCheckList(selectedTravel.value!.id);
     } catch (e) {
       if (kDebugMode) print(e);
     }

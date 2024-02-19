@@ -17,7 +17,7 @@ class PackitCategoryPostEntity with _$PackitCategoryPostEntity {
 class PackitCategoryPatchEntity with _$PackitCategoryPatchEntity {
   const factory PackitCategoryPatchEntity({
     required int categoryId,
-    required int title,
+    required String title,
   }) = _PackitCategoryPatchEntity;
 
   factory PackitCategoryPatchEntity.fromJson(Map<String, Object?> json) => _$PackitCategoryPatchEntityFromJson(json);

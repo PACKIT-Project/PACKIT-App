@@ -2,6 +2,8 @@ import 'package:get/route_manager.dart';
 import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/presentation/authentication/controller/login_binding.dart';
 import 'package:packit/presentation/authentication/views/login_page.dart';
+import 'package:packit/presentation/home/views/cluster_detail_page.dart';
+import 'package:packit/presentation/home/views/cluster_manage_page.dart';
 import 'package:packit/presentation/home/views/travel_remind_page.dart';
 import 'package:packit/presentation/main/controller/main_binding.dart';
 import 'package:packit/presentation/main/views/main_page.dart';
@@ -29,6 +31,15 @@ class Routes {
       binding: LoginBinding(),
     ),
 
+    // Home
+    GetPage(
+      name: RoutePath.clusterDetail,
+      page: () => const ClusterDetailPage(),
+    ),
+    GetPage(
+      name: RoutePath.clusterManage,
+      page: () => const ClusterManagePage(),
+    ),
     GetPage(
       name: RoutePath.travelRemind,
       page: () => const TravelRemindPage(),
