@@ -7,11 +7,12 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/app_typeface.dart';
+import 'package:packit/app/config/routes/route_path.dart';
 import 'package:packit/domain/entities/travel_response.dart';
 import 'package:packit/presentation/main/controller/tour_controller.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
-enum PackitBottomSheetType { addCluster, deleteMember, completeCheckList, travelList }
+enum PackitBottomSheetType { addCluster, deleteMember, completeCheckList, travelAdd, travelList }
 
 showPackitBottomSheet(BuildContext context, PackitBottomSheetType type, {dynamic data}) async {
   await showModalBottomSheet(
@@ -30,6 +31,7 @@ showPackitBottomSheet(BuildContext context, PackitBottomSheetType type, {dynamic
               if (type == PackitBottomSheetType.addCluster) _AddClusterBottomSheet(data),
               if (type == PackitBottomSheetType.deleteMember) const _DeleteMemberBottomSheet(),
               if (type == PackitBottomSheetType.completeCheckList) const _CompleteCheckListBottomSheet(),
+              if (type == PackitBottomSheetType.travelAdd) const _TravelAddBottomSheet(),
               if (type == PackitBottomSheetType.travelList) const _TravelListBottomSheet(),
             ],
           ),
@@ -218,6 +220,55 @@ class _DeleteMemberBottomSheet extends StatelessWidget {
               ),
             ],
           )
+        ],
+      ),
+    );
+  }
+}
+
+class _TravelAddBottomSheet extends StatelessWidget {
+  const _TravelAddBottomSheet();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 25.w),
+      child: Column(
+        children: [
+          const _BottomSheetDragHandle(),
+          SizedBox(height: 9.h),
+          GestureDetector(
+            onTap: () {
+              Get.back();
+              Get.toNamed(RoutePath.selectRegion);
+            },
+            child: Row(
+              children: [
+                SvgPicture.asset('assets/icons/home/add_travel.svg', width: 35.w, height: 35.w),
+                SizedBox(width: 11.w),
+                Text("새로운 여행 생성", style: AppTypeFace.to.body5SemiBold.copyWith(color: AppColor.coolGray200)),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 12.h),
+            child: Divider(color: AppColor.gray2, thickness: 1.w, height: 1.w),
+          ),
+          Row(
+            children: [
+              SvgPicture.asset('assets/icons/home/join_travel.svg', width: 35.w, height: 35.w),
+              SizedBox(width: 11.w),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("초대코드로 참여", style: AppTypeFace.to.body5SemiBold.copyWith(color: AppColor.coolGray200, height: 1)),
+                  SizedBox(height: 2.h),
+                  Text("공유받은 코드 입력하여 그룹 참여", style: AppTypeFace.to.caption2Medium.copyWith(color: AppColor.gray4, height: 1)),
+                ],
+              ),
+            ],
+          ),
+          SizedBox(height: 19.06.h),
         ],
       ),
     );

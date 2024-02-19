@@ -1,10 +1,11 @@
+import 'package:defer_pointer/defer_pointer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:packit/app/config/app_color.dart';
 import 'package:packit/app/config/app_typeface.dart';
-import 'package:packit/app/config/routes/route_path.dart';
+import 'package:packit/presentation/widget/packit_bottom_sheet.dart';
 
 import '../controller/main_controller.dart';
 
@@ -13,99 +14,103 @@ class PackitBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.bottomCenter,
-      clipBehavior: Clip.none,
-      children: [
-        Positioned.fill(
-          top: -120.w,
-          right: 16.w,
-          child: const Align(
-            alignment: Alignment.topRight,
-            child: _AddTourToolTip(),
+    return DeferredPointerHandler(
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        clipBehavior: Clip.none,
+        children: [
+          Positioned.fill(
+            top: -120.w,
+            right: 16.w,
+            child: const Align(
+              alignment: Alignment.topRight,
+              child: _AddTourToolTip(),
+            ),
           ),
-        ),
-        Positioned.fill(
-          top: -30,
-          right: 26,
-          child: Align(
-            alignment: Alignment.topRight,
-            child: Container(
-              width: 80,
-              height: 80,
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0x14000000),
-                    blurRadius: 17,
-                    offset: Offset(0, 1.85),
-                    spreadRadius: 0,
-                  ),
+          Positioned.fill(
+            top: -30,
+            right: 26,
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Container(
+                width: 80,
+                height: 80,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x14000000),
+                      blurRadius: 17,
+                      offset: Offset(0, 1.85),
+                      spreadRadius: 0,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Container(
+            height: MediaQuery.of(context).padding.bottom + 50.w,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0x14000000),
+                  blurRadius: 17,
+                  offset: Offset(0, 1.85),
+                  spreadRadius: 0,
+                ),
+              ],
+            ),
+            child: Padding(
+              padding: EdgeInsets.only(left: 38.77.w, bottom: MediaQuery.of(context).padding.bottom),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  const _BottomNavBarItem(label: '홈', icon: 'home', index: 0),
+                  SizedBox(width: 46.w),
+                  const _BottomNavBarItem(label: '피드', icon: 'map', index: 1),
+                  SizedBox(width: 46.w),
+                  const _BottomNavBarItem(label: '내 여행', icon: 'user', index: 2),
                 ],
               ),
             ),
           ),
-        ),
-        Container(
-          height: MediaQuery.of(context).padding.bottom + 50.w,
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Color(0x14000000),
-                blurRadius: 17,
-                offset: Offset(0, 1.85),
-                spreadRadius: 0,
-              ),
-            ],
-          ),
-          child: Padding(
-            padding: EdgeInsets.only(left: 38.77.w, bottom: MediaQuery.of(context).padding.bottom),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                const _BottomNavBarItem(label: '홈', icon: 'home', index: 0),
-                SizedBox(width: 46.w),
-                const _BottomNavBarItem(label: '피드', icon: 'map', index: 1),
-                SizedBox(width: 46.w),
-                const _BottomNavBarItem(label: '내 여행', icon: 'user', index: 2),
-              ],
-            ),
-          ),
-        ),
-        Positioned.fill(
-          top: -30,
-          right: 26,
-          child: Align(
-            alignment: Alignment.topRight,
-            child: Container(
-              width: 80,
-              height: 80,
-              decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
-              child: Center(
-                child: GestureDetector(
-                  onTap: () => Get.toNamed(RoutePath.selectRegion),
-                  child: Container(
-                    width: 66,
-                    height: 66,
-                    decoration: const BoxDecoration(color: AppColor.mainBlue, shape: BoxShape.circle, boxShadow: [
-                      BoxShadow(
-                        color: Color(0x14000000),
-                        blurRadius: 7.42,
-                        offset: Offset(0, 1.85),
-                        spreadRadius: 0,
-                      )
-                    ]),
-                    child: Center(child: SvgPicture.asset('assets/icons/home/add.svg', width: 36, height: 36, fit: BoxFit.cover)),
+          Positioned.fill(
+            top: -30,
+            right: 26,
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Container(
+                width: 80,
+                height: 80,
+                decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                child: Center(
+                  child: DeferPointer(
+                    child: GestureDetector(
+                      onTap: () async => await showPackitBottomSheet(context, PackitBottomSheetType.travelAdd),
+                      child: Container(
+                        width: 66,
+                        height: 66,
+                        decoration: const BoxDecoration(color: AppColor.mainBlue, shape: BoxShape.circle, boxShadow: [
+                          BoxShadow(
+                            color: Color(0x14000000),
+                            blurRadius: 7.42,
+                            offset: Offset(0, 1.85),
+                            spreadRadius: 0,
+                          )
+                        ]),
+                        child: Center(child: SvgPicture.asset('assets/icons/home/add.svg', width: 36, height: 36, fit: BoxFit.cover)),
+                      ),
+                    ),
                   ),
                 ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
